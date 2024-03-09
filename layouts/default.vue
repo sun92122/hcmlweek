@@ -30,21 +30,25 @@
 
     <!-- footer -->
     <footer class="bg-light py-2 text-center">
-      
       <p>&copy; 2024 NTNU HCML WEEK</p>
     </footer>
   </div>
 </template>
 
 <script lang="ts">
-export default defineComponent({
-});
+import { useStore } from "../store";
+export default {
+  setup() {
+    const store = useStore();
+    store.getProductsFromAPI();
+  },
+};
 </script>
 
 <style>
 .wrapper {
   display: flex;
-  flex-direction: row;
-  justify-content: space-between;
+  flex-direction: column;
+  align-items: center;
 }
 </style>
