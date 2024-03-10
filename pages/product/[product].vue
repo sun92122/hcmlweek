@@ -30,12 +30,16 @@
           ></UButton>
         </div>
         <div class="product-price-container">
-          <span v-show="tmpOptionIndex === -1">
+          <span v-if="product.price.max !== null" v-show="tmpOptionIndex === -1">
             <span>NT ${{ product.price.min }}</span>
             <span v-if="product.price.max > product.price.min">-</span>
             <span v-if="product.price.max > product.price.min"
               >NT ${{ product.price.max }}</span
             >
+            <del v-if="product.price.ori">{{ product.price.ori }}</del>
+          </span>
+          <span v-if="product.price.max === null">
+            <span>NT ${{ product.price.min }}</span>
             <del v-if="product.price.ori">{{ product.price.ori }}</del>
           </span>
           <span v-show="tmpOptionIndex !== -1">

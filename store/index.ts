@@ -4,8 +4,8 @@ const API_URL = "https://api.nuxtjs.dev/products";
 
 interface Product {
   price: {
-    ori: number;
-    max: number;
+    ori: number | null;
+    max: number | null;
     min: number;
   };
   noted: string;
@@ -15,111 +15,111 @@ interface Product {
     price: number;
     tag: string;
   }[];
+  description: string | null;
+}
+
+interface Products {
+  [key: string]: Product;
 }
 
 interface State {
   isLoading: boolean;
-  cart: any;
-  products: { [key: string]: Product };
-  tmpProduct: Product;
+  products: Products;
+  tmpProduct: Product | null;
   tmpOptionIndex: number;
 }
 
 export const useStore = defineStore("store", {
-  state: () => ({
-    cart: {
-      carts: [],
-    },
-    isLoading: false,
-    products: {
-      ProductName: {
-        price: {
-          ori: 200,
-          max: 100,
-          min: 50,
+  state: () =>
+    ({
+      // cart: {
+      //   carts: [],
+      // },
+      isLoading: false,
+      products: {
+        ProductName: {
+          price: {
+            ori: 200,
+            max: 100,
+            min: 50,
+          },
+          noted: "Food",
+          image: "https://via.placeholder.com/150",
+          options: [
+            {
+              name: "A",
+              price: 50,
+              tag: "Food",
+            },
+            {
+              name: "B",
+              price: 100,
+              tag: "Food",
+            },
+          ],
         },
-        noted: "Food",
-        image: "https://via.placeholder.com/150",
-        options: [
-          {
-            name: "A",
-            price: 50,
-            tag: "Food",
+        "Product Name1": {
+          price: {
+            min: 50,
           },
-          {
-            name: "B",
-            price: 100,
-            tag: "Food",
-          },
-        ],
-      },
-      "Product Name1": {
-        price: {
-          ori: null,
-          max: null,
-          min: 50,
+          noted: "Food",
+          image: "https://via.placeholder.com/150",
+          options: [
+            {
+              name: "A",
+              tag: "Food",
+            },
+          ],
         },
-        noted: "Food",
-        image: "https://via.placeholder.com/150",
-        options: [
-          {
-            name: "A",
-            price: null,
-            tag: "Food",
+        "Product Name2": {
+          price: {
+            max: 100,
+            min: 50,
           },
-        ],
-      },
-      "Product Name2": {
-        price: {
-          ori: null,
-          max: 100,
-          min: 50,
+          noted: "Food",
+          image: "https://via.placeholder.com/150",
+          options: [
+            {
+              name: "A",
+              price: 50,
+              tag: "Food",
+            },
+            {
+              name: "B",
+              price: 50,
+              tag: "Food",
+            },
+          ],
         },
-        noted: "Food",
-        image: "https://via.placeholder.com/150",
-        options: [
-          {
-            name: "A",
-            price: 50,
-            tag: "Food",
+        "Product Name3": {
+          price: {
+            ori: 200,
+            min: 50,
           },
-          {
-            name: "B",
-            price: 50,
-            tag: "Food",
-          },
-        ],
-      },
-      "Product Name3": {
-        price: {
-          ori: 200,
-          max: NaN,
-          min: 50,
+          noted: "Food",
+          image: "https://via.placeholder.com/150",
+          options: [
+            {
+              name: "A",
+              price: 50,
+              tag: "Food",
+            },
+            {
+              name: "測試測試測試測試",
+              price: 50,
+              tag: "Food",
+            },
+            {
+              name: "C",
+              price: 50,
+              tag: "Food",
+            },
+          ],
         },
-        noted: "Food",
-        image: "https://via.placeholder.com/150",
-        options: [
-          {
-            name: "A",
-            price: 50,
-            tag: "Food",
-          },
-          {
-            name: "測試測試測試測試",
-            price: 50,
-            tag: "Food",
-          },
-          {
-            name: "C",
-            price: 50,
-            tag: "Food",
-          },
-        ],
       },
-    },
-    tmpProduct: null as Product | null,
-    tmpOptionIndex: -1,
-  }),
+      tmpProduct: null as Product | null,
+      tmpOptionIndex: -1,
+    } as unknown as State),
   actions: {
     getCart() {},
     addCart() {},
@@ -137,14 +137,14 @@ export const useStore = defineStore("store", {
       //   });
     },
     goToProduct(productName: string) {
-      this.tmpProduct = this.products["productName"];
+      this.tmpProduct = this.products[`${productName}`];
     },
     resetTmpObjectIndex() {
       this.tmpOptionIndex = -1;
     },
     getProduct(productName: string) {
-      return this.products["productName"];
-    }
+      return this.products[`${productName}`];
+    },
   },
   getters: {},
 });
