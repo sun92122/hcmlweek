@@ -69,12 +69,13 @@
             <UButton
               color="gray"
               variant="solid"
-              :label="'-'"
+              :label="'－'"
               @click="
                 () => {
-                  cartCount = Math.max(0, Math.floor(cartCount) - 1);
+                  cartCount = Math.max(1, Math.floor(cartCount) - 1);
                 }
               "
+              :disabled="cartCount <= 1"
               :ui="buttonStyle"
             ></UButton>
             <UInput
@@ -82,6 +83,9 @@
               variant="outline"
               placeholder="?"
               type="number"
+              max="9"
+              min="1"
+              step="1"
               v-model="cartCount"
               :ui="{
                 rounded: false,
@@ -91,12 +95,13 @@
             <UButton
               color="gray"
               variant="solid"
-              :label="'+'"
+              :label="'＋'"
               @click="
                 () => {
-                  cartCount = Math.floor(cartCount) + 1;
+                  cartCount = Math.min(9, Math.floor(cartCount) + 1);
                 }
               "
+              :disabled="cartCount >= 9"
               :ui="buttonStyle"
             ></UButton>
           </UButtonGroup>
@@ -140,18 +145,6 @@ import { mapWritableState } from "pinia";
 import { useStore } from "~/store";
 
 export default {
-  async asyncData() {
-    const store = useStore();
-    if (Object.keys(store.products).length !== 0) {
-      return;
-    }
-    store.products = await $fetch(store.apiURL, {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-      },
-    }).then(async (res: any) => await res.json());
-  },
   data() {
     const toast = useToast();
     return {
@@ -331,7 +324,7 @@ div {
   align-items: center;
   justify-content: flex-start;
   width: 100%;
-  margin-top: 3rem;
+  margin-top: 2rem;
 }
 
 .count-container div {
@@ -363,12 +356,13 @@ input {
   align-items: flex-start;
   justify-content: flex-start;
   width: 90%;
-  margin-top: 3rem;
+  margin-top: 2rem;
 }
 
 .product-description-container * {
+  text-align: left;
   font-size: large;
-  font-weight: bold;
+  font-weight: 500;
   margin-top: 1rem;
 }
 
