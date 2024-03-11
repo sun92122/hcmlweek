@@ -15,7 +15,7 @@
   text-align: center;
   height: 100%;
   min-height: 100vh;
-  background-color: #673ab740;
+  background-color: #43309c5e;
 }
 
 .page-enter-active,
