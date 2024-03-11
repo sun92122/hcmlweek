@@ -4,6 +4,10 @@
       <div>
         <productBox
           v-for="(product, productName) in tmpProducts"
+          v-show="
+          /* nowTag in product.tags */
+            true
+          "
           :-product-image="product.image"
           :-product-name="productName"
           :-product-noted="product.noted"

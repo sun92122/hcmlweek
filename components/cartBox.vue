@@ -4,11 +4,12 @@
       <NuxtLink :to="`/product/${productName}`">
         <NuxtImg
           :src="
-            product.image ? product.image : 'https://via.placeholder.com/150'
+            productImage ? productImage : 'https://via.placeholder.com/150'
           "
           :alt="`product-${productName}`"
           sizes="40vw"
           fit="inside"
+          :modifiers="{ roundCorner: '50' }"
         />
       </NuxtLink>
     </div>
@@ -18,7 +19,7 @@
           <span>{{ productName }}</span>
         </NuxtLink>
       </div>
-      <div class="product-info">
+      <!-- <div class="product-info">
         <div class="product-option">
           <span></span>
         </div>
@@ -28,24 +29,26 @@
         <div class="product-subtotal">
           <span>小計</span>
         </div>
-      </div>
+      </div> -->
       <div class="product-info" v-for="(count, option) in item">
         <div class="product-option">
           <span>{{
-            product.options[option] ? product.options[option].name : ""
+            productOptions[option] ? productOptions[option].name : ""
           }}</span>
         </div>
         <div class="product-count">
           <span>{{ count }}</span>
         </div>
         <div class="product-subtotal">
-          <span>{{
-            product.options[option]
-              ? count * (product.options[option].price || product.price.min)
-              : count * product.price.min
-          }}</span>
+          <span
+            >NT ${{
+              productOptions[option]
+                ? count * (productOptions[option].price || productPrice.min)
+                : count * productPrice.min
+            }}</span
+          >
         </div>
-        <div class="product-remove">
+        <!-- <div class="product-remove">
           <UButton
             size="2xs"
             variant="outline"
@@ -53,7 +56,7 @@
             :label="'移除'"
             @click="() => store.removeFromCart(productName, parseInt(option))"
           ></UButton>
-        </div>
+        </div> -->
       </div>
     </div>
   </div>
@@ -70,7 +73,15 @@ export default defineComponent({
       type: String,
       required: true,
     },
-    product: {
+    productImage: {
+      type: String,
+      required: true,
+    },
+    productOptions: {
+      type: Object,
+      required: true,
+    },
+    productPrice: {
       type: Object,
       required: true,
     },
@@ -101,6 +112,12 @@ const store = useStore();
   max-height: calc(25vw + 10px);
 }
 
+.product-img img {
+  width: 100%;
+  height: auto;
+  border-radius: 5%;
+}
+
 .product-container {
   display: flex;
   flex-direction: column;
@@ -111,18 +128,20 @@ const store = useStore();
 }
 
 .product-name {
-  margin-top: 0.5rem;
+  margin-top: 0.2rem;
   margin-bottom: 0.5rem;
-  padding-left: 2rem;
-  font-size: 1.2rem;
+  padding-left: 1rem;
+  font-size: medium;
   font-weight: 500;
 }
 
 .product-info {
   display: flex;
   flex-direction: row;
+  justify-content: space-between;
   width: 100%;
   margin-top: 0.5rem;
+  font-size: small;
 }
 
 .product-info div {
@@ -134,7 +153,7 @@ const store = useStore();
 }
 
 .product-option {
-  padding-left: 1.5rem;
+  padding-left: 1.2rem;
   width: 27%;
   text-align: left;
 }
@@ -144,7 +163,7 @@ const store = useStore();
 }
 
 .product-subtotal {
-  width: 15%;
+  width: 30%;
 }
 
 .product-remove {

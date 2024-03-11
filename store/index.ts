@@ -2,7 +2,7 @@ import { defineStore, createPinia } from "pinia";
 import Product from "~/pages/product/[product].vue";
 
 const API_KEY =
-  "AKfycbxsmJ6CWp-ffRH_YOu1n2eB-JVDvE-gc4OQSGJ6jYx2XPNsveut7C4NmfDiRGwthTQoXg";
+  "AKfycbwZtfLjvI7jhdgbcJLUDVPp4ca3Xs2kQzv1phs_ZKhJjcpvd2wu5aWyGMZ1xEZJY8Qf9g";
 const API_URL = `https://script.google.com/macros/s/${API_KEY}/exec`;
 // "https://script.google.com/macros/s/AKfycbxsmJ6CWp-ffRH_YOu1n2eB-JVDvE-gc4OQSGJ6jYx2XPNsveut7C4NmfDiRGwthTQoXg/exec";
 interface Product {
@@ -19,6 +19,7 @@ interface Product {
     tag: string | null;
   }[];
   description: string | null;
+  tags: string[] | null;
 }
 
 interface Products {

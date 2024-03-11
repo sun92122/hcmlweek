@@ -3,7 +3,7 @@
     <!-- nav bar -->
     <UHorizontalNavigation
       :links="links"
-      class="border-b border-gray-200 dark:border-gray-800"
+      class="border-b border-gray-200 dark:border-gray-800 sticky top-0 z-10 bg-white dark:bg-gray-900"
     />
 
     <!-- cart icon -->
@@ -40,8 +40,8 @@ export default {
       return [
         [
           {
-            label: "Home",
-            icon: "i-heroicons-home",
+            label: "Shop",
+            icon: "i-heroicons-shopping-bag",
             to: "/",
           },
           {

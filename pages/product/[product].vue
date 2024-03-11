@@ -168,8 +168,8 @@ export default {
 
       const store = useStore();
       store.addToCart(name, index, Math.max(0, Math.floor(count)));
+      store.$patch({ cartCount: 1 });
 
-      store.resetCartCount();
       this.toast.add({
         title: "成功加入購物車",
         description:
@@ -270,8 +270,9 @@ div {
 }
 
 .product-name-container span {
-  font-size: xx-large;
+  font-size: x-large;
   font-weight: bold;
+  text-align: left;
 }
 
 .product-noted-container {
@@ -282,8 +283,7 @@ div {
 }
 
 .product-noted-container span {
-  font-size: x-large;
-  font-weight: bold;
+  font-size: large;
 }
 
 .product-option-container {
