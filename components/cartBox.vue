@@ -6,9 +6,9 @@
           :src="
             product.image ? product.image : 'https://via.placeholder.com/150'
           "
-          alt="product"
-          height="100px"
-          fit="outside"
+          :alt="`product-${productName}`"
+          sizes="40vw"
+          fit="inside"
         />
       </NuxtLink>
     </div>
@@ -30,47 +30,29 @@
         </div>
       </div>
       <div class="product-info" v-for="(count, option) in item">
-        <div v-if="product.options[option]">
-          <div class="product-option">
-            <span>{{ product.options[option].name }}</span>
-          </div>
-          <div class="product-count">
-            <span>{{ count }}</span>
-          </div>
-          <div class="product-subtotal">
-            <span>{{
-              count * (product.options[option].price || product.price.min)
-            }}</span>
-          </div>
-          <div class="product-remove">
-            <UButton
-              size="2xs"
-              variant="outline"
-              color="red"
-              :label="'移除'"
-              @click="() => store.removeFromCart(productName, parseInt(option))"
-            ></UButton>
-          </div>
+        <div class="product-option">
+          <span>{{
+            product.options[option] ? product.options[option].name : ""
+          }}</span>
         </div>
-        <div v-else>
-          <div class="product-option">
-            <span></span>
-          </div>
-          <div class="product-count">
-            <span>{{ count }}</span>
-          </div>
-          <div class="product-subtotal">
-            <span>{{ count * product.price.min }}</span>
-          </div>
-          <div class="product-remove">
-            <UButton
-              size="2xs"
-              variant="outline"
-              color="red"
-              :label="'移除'"
-              @click="() => store.removeFromCart(productName, -1)"
-            ></UButton>
-          </div>
+        <div class="product-count">
+          <span>{{ count }}</span>
+        </div>
+        <div class="product-subtotal">
+          <span>{{
+            product.options[option]
+              ? count * (product.options[option].price || product.price.min)
+              : count * product.price.min
+          }}</span>
+        </div>
+        <div class="product-remove">
+          <UButton
+            size="2xs"
+            variant="outline"
+            color="red"
+            :label="'移除'"
+            @click="() => store.removeFromCart(productName, parseInt(option))"
+          ></UButton>
         </div>
       </div>
     </div>
@@ -115,8 +97,8 @@ const store = useStore();
 }
 
 .product-img {
-  min-width: calc(12vw + 10px);
-  min-height: calc(12vw + 10px);
+  max-width: calc(25vw + 10px);
+  max-height: calc(25vw + 10px);
 }
 
 .product-container {
