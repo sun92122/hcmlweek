@@ -91,6 +91,7 @@ export default defineComponent({
   align-items: center;
   justify-content: space-evenly;
   width: 87%;
+  max-width: 42vw;
   height: 100px;
 }
 
