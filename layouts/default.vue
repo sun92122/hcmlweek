@@ -1,32 +1,17 @@
 <template>
   <div class="wrapper">
     <!-- nav bar -->
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-      <a class="store-name" href="/">Store</a>
-      <button
-        class="navbar-toggler"
-        type="button"
-        data-toggle="collapse"
-        data-target="#navbarNavAltMarkup"
-        aria-controls="navbarNavAltMarkup"
-        aria-expanded="false"
-        aria-label="Toggle navigation"
-      >
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div id="navbarNavAltMarkup" class="collapse navbar-collapse">
-        <div class="navbar-nav">
-          <a class="nav-item nav-link" href="/">Home</a>
-          <a class="nav-item nav-link" href="/about">About</a>
-          <a class="nav-item nav-link" href="/contact">Contact</a>
-        </div>
-      </div>
-    </nav>
+    <UHorizontalNavigation
+      :links="links"
+      class="border-b border-gray-200 dark:border-gray-800"
+    />
 
     <!-- cart icon -->
 
     <!-- shop -->
-    <NuxtPage />
+    <div class="page-container">
+      <NuxtPage />
+    </div>
 
     <!-- footer -->
     <footer class="bg-light py-2 text-center">
@@ -37,18 +22,67 @@
 
 <script lang="ts">
 import { useStore } from "../store";
+
 export default {
-  setup() {
-    const store = useStore();
-    store.getProductsFromAPI();
+  name: "DefaultLayout",
+  data() {
+    const colorMode = useColorMode();
+    const isDark = colorMode.value === "dark";
+    return {
+      isDark,
+      loading: true,
+    };
+  },
+  computed: {
+    links() {
+      const store = useStore();
+      const cartCount = store.getCartCount;
+      return [
+        [
+          {
+            label: "Home",
+            icon: "i-heroicons-home",
+            to: "/",
+          },
+          {
+            label: "Help",
+            icon: "i-heroicons-question-mark-circle",
+          },
+        ],
+        [
+          {
+            label: "",
+            icon: this.isDark ? "i-heroicons-moon" : "i-heroicons-sun",
+            click: () => {
+              const colorMode = useColorMode();
+              colorMode.preference =
+                colorMode.value === "dark" ? "light" : "dark";
+            },
+          },
+          {
+            label: "Cart",
+            icon: "i-heroicons-shopping-cart",
+            to: "/cart",
+            badge: (cartCount > 0 && cartCount) || undefined,
+          },
+        ],
+      ];
+    },
   },
 };
 </script>
+
+<script setup lang="ts"></script>
 
 <style>
 .wrapper {
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+.page-container {
+  min-height: calc(100vh - 100px);
+  width: 100%;
 }
 </style>

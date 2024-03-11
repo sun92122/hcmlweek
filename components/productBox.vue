@@ -1,21 +1,24 @@
 <template>
   <div class="product-box" @click="redirectToProduct">
     <div class="product-img">
-      <img :src="ProductImage" alt="product" />
+      <NuxtImg
+        :src="ProductImage ? ProductImage : 'https://via.placeholder.com/150'"
+        alt="product"
+      />
     </div>
     <div class="product-info">
       <div class="product-name">
         <span>{{ ProductName }}</span>
       </div>
       <div class="product-noted">
-        <span>{{ ProductNoted }}</span>
+        <span v-html="ProductNoted"></span>
       </div>
       <div class="product-price">
-        <span>
-          <span>{{ Price.min }}</span>
+        <span v-if="Price">
+          <span>NT ${{ Price.min }}</span>
           <span v-if="Price.max > Price.min">-</span>
-          <span v-if="Price.max > Price.min">{{ Price.max }}</span>
-          <del v-if="Price.ori">{{ Price.ori }}</del>
+          <span v-if="Price.max > Price.min">NT ${{ Price.max }}</span>
+          <del v-if="Price.ori">NT ${{ Price.ori }}</del>
         </span>
       </div>
     </div>
@@ -24,7 +27,6 @@
 
 <script lang="ts">
 import { useStore } from "../store";
-import { mapWritableState } from "pinia";
 import { defineComponent } from "vue";
 
 export default defineComponent({
@@ -35,7 +37,7 @@ export default defineComponent({
       required: false,
     },
     ProductName: {
-      type: String,
+      type: [String, Number],
       required: false,
     },
     ProductNoted: {
@@ -50,7 +52,7 @@ export default defineComponent({
   methods: {
     redirectToProduct() {
       const store = useStore();
-      store.goToProduct(this.ProductName);
+      store.goToProduct(`${this.ProductName}`);
       this.$router.push(`/product/${this.ProductName}`);
     },
   },
@@ -63,15 +65,15 @@ export default defineComponent({
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background-color: rgba(173, 71, 120, 0.5);
+  background-color: rgba(227, 113, 168, 0.5);
   border-radius: 10px;
   box-shadow: 0 0 10px 0 rgba(250, 101, 255, 0.312);
-  margin: 1rem 1rem 0;
+  margin: 0.5rem 0.5rem 0;
 }
 
 .product-img {
-  width: 265px;
-  height: 265px;
+  width: 42vw;
+  height: 42vw;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -98,11 +100,11 @@ export default defineComponent({
 }
 
 .product-noted {
-  font-size: 0.8rem;
+  font-size: x-small;
 }
 
 .product-name .product-price {
-  font-size: 1.2rem;
+  font-size: large;
 }
 
 .product-price span span {
