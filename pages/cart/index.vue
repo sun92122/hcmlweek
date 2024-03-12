@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="cart-container">
-      <div v-if="!Object.keys(cart).length">
+      <div v-if="!Object.keys(cart).length" class="cart-empty-container">
         <h2>購物車是空的</h2>
         <NuxtLink to="/">&lt; 繼續購物</NuxtLink>
       </div>
@@ -29,13 +29,18 @@
             :item="item"
           />
         </div>
-      </div>
-      <!-- <div v-else>
-        <h1 class="text-center w-full text-3xl">Loading...</h1>
-      </div> -->
-      <UDivider />
-      <div class="cart-total">
-        <span class="text-3xl" v-if="total > 0">合計：NT ${{ total }}</span>
+        <UDivider />
+        <div class="cart-total">
+          <span class="text-3xl" v-if="total > 0">合計：NT ${{ total }}</span>
+        </div>
+        <div class="next-button-container" v-if="total > 0">
+          <UButton
+            color="purple"
+            size="lg"
+            :label="'下一步，填寫聯路資訊'"
+            @Click="() => $router.push('/checkout')"
+          ></UButton>
+        </div>
       </div>
     </div>
   </div>
@@ -95,6 +100,15 @@ const total = store.getTotal;
   margin-top: 2rem;
 }
 
+.cart-empty-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 2rem;
+  font-size: x-large;
+}
+
 .title-container {
   display: flex;
   flex-direction: column;
@@ -113,5 +127,13 @@ const total = store.getTotal;
   padding-right: 1rem;
   width: 100%;
   font-size: small;
+}
+
+.next-button-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 2rem;
 }
 </style>
