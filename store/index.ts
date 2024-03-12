@@ -147,6 +147,7 @@ export const useStore = defineStore("store", {
     getTotal() {
       let total = 0;
       for (const productName in this.cart) {
+        if (!this.products[productName]) continue;
         for (const option in this.cart[productName]) {
           if (this.products[productName].options.length === 0) {
             total +=
