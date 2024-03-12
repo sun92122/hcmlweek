@@ -40,10 +40,11 @@
         </div>
         <div class="next-button-container" v-if="total > 0">
           <UButton
-            color="purple"
+            color="fuchsia"
+            variant="solid"
             size="lg"
             :label="'下一步，填寫聯路資訊'"
-            @Click="() => $router.push('/checkout')"
+            to="/checkout"
           ></UButton>
         </div>
       </div>
@@ -81,21 +82,6 @@ if (Object.keys(products).length === 0) {
   store.products = productsData;
 }
 
-const tempCart = store.cart;
-for (const product in tempCart) {
-  if (!products[product]) {
-    tempCart[product] = {};
-  } else {
-    for (const option in tempCart[product]) {
-      if (tempCart[product][option] < 1) {
-        delete tempCart[product][option];
-      }
-    }
-  }
-  if (Object.keys(tempCart[product]).length === 0) {
-    delete tempCart[product];
-  }
-}
 const cart = store.getCart;
 const total = store.getTotal;
 </script>
