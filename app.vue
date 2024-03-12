@@ -7,6 +7,18 @@
   </div>
 </template>
 
+<script setup lang="ts">
+useHead({
+  title: "竹苗文化週",
+  meta: [
+    {
+      name: "description",
+      content: "2024 師大竹苗文化週",
+    },
+  ],
+});
+</script>
+
 <style>
 @import url(//fonts.googleapis.com/earlyaccess/notosanstc.css);
 
