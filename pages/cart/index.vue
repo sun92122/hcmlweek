@@ -3,7 +3,12 @@
     <div class="cart-container">
       <div v-if="!Object.keys(cart).length" class="cart-empty-container">
         <h2>購物車是空的</h2>
-        <NuxtLink to="/">&lt; 繼續購物</NuxtLink>
+        <UButton
+          color="black"
+          size="lg"
+          :label="'去逛逛商品'"
+          @Click="() => $router.push('/')"
+        ></UButton>
       </div>
       <div v-else>
         <span class="text-2xl">購物車～～</span>
