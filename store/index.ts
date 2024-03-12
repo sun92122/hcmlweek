@@ -1,10 +1,10 @@
 import { defineStore, createPinia } from "pinia";
 import Product from "~/pages/product/[product].vue";
 
-const API_KEY =
-  "AKfycbwZtfLjvI7jhdgbcJLUDVPp4ca3Xs2kQzv1phs_ZKhJjcpvd2wu5aWyGMZ1xEZJY8Qf9g";
+// read from .env
+const API_KEY = process.env.API_KEY;
 const API_URL = `https://script.google.com/macros/s/${API_KEY}/exec`;
-// "https://script.google.com/macros/s/AKfycbxsmJ6CWp-ffRH_YOu1n2eB-JVDvE-gc4OQSGJ6jYx2XPNsveut7C4NmfDiRGwthTQoXg/exec";
+// e.g., "https://script.google.com/macros/s/AKfycbxsmJ6CWp-ffRH_YOu1n2eB-JVDvE-gc4OQSGJ6jYx2XPNsveut7C4NmfDiRGwthTQoXg/exec";
 interface Product {
   price: {
     ori: number | null;
