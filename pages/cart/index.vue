@@ -35,7 +35,7 @@
       </div> -->
       <UDivider />
       <div class="cart-total">
-        <span class="text-3xl">合計：NT ${{ total }}</span>
+        <span class="text-3xl" v-if="total > 0">合計：NT ${{ total }}</span>
       </div>
     </div>
   </div>
@@ -71,22 +71,22 @@ if (Object.keys(products).length === 0) {
   store.products = productsData;
 }
 
-const cart = store.cart;
-for (const product in cart) {
+const tempCart = store.cart;
+for (const product in tempCart) {
   if (!products[product]) {
-    cart[product] = {};
+    tempCart[product] = {};
   } else {
-    for (const option in cart[product]) {
-      if (cart[product][option] < 1) {
-        delete cart[product][option];
+    for (const option in tempCart[product]) {
+      if (tempCart[product][option] < 1) {
+        delete tempCart[product][option];
       }
     }
   }
-  if (Object.keys(cart[product]).length === 0) {
-    delete cart[product];
+  if (Object.keys(tempCart[product]).length === 0) {
+    delete tempCart[product];
   }
 }
-
+const cart = store.getCart;
 const total = store.getTotal;
 </script>
 
