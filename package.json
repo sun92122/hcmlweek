@@ -15,7 +15,8 @@
     "@nuxt/ui": "^2.14.2",
     "nuxt": "^3.10.3",
     "vue": "^3.4.21",
-    "vue-router": "^4.3.0"
+    "vue-router": "^4.3.0",
+    "zod": "^3.22.4"
   },
   "devDependencies": {
     "@nuxt/image": "^1.4.0",
