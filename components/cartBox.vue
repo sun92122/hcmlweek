@@ -3,9 +3,7 @@
     <div class="product-img">
       <NuxtLink :to="`/product/${productName}`">
         <NuxtImg
-          :src="
-            productImage ? productImage : 'https://via.placeholder.com/150'
-          "
+          :src="productImage ? productImage : 'https://via.placeholder.com/150'"
           :alt="`product-${productName}`"
           sizes="40vw"
           fit="inside"
@@ -19,17 +17,6 @@
           <span>{{ productName }}</span>
         </NuxtLink>
       </div>
-      <!-- <div class="product-info">
-        <div class="product-option">
-          <span></span>
-        </div>
-        <div class="product-count">
-          <span>數量</span>
-        </div>
-        <div class="product-subtotal">
-          <span>小計</span>
-        </div>
-      </div> -->
       <div class="product-info" v-for="(count, option) in item">
         <div class="product-option">
           <span>{{
@@ -37,7 +24,40 @@
           }}</span>
         </div>
         <div class="product-count">
-          <span>{{ count }}</span>
+          <UButtonGroup
+            :key="option"
+            size="xs"
+            :ui="{
+              rounded: 'rounded-md',
+            }"
+          >
+            <UButton
+              variant="variant"
+              icon="i-heroicons-minus-small"
+              square
+              :onClick="
+                () => store.minusOneToCart(productName, parseInt(option))
+              "
+              :ui="{ primary: true, secondary: false, rounded: false }"
+            ></UButton>
+            <UInput
+              variant="none"
+              :value="item[option]"
+              disabled
+              :ui="{
+                rounded: false,
+                base: 'text-center',
+              }"
+            ></UInput>
+            <UButton
+              color="gray"
+              variant="ghost"
+              icon="i-heroicons-plus-small"
+              square
+              :onClick="() => store.addOneToCart(productName, parseInt(option))"
+              :ui="{ primary: true, secondary: false, rounded: false }"
+            ></UButton>
+          </UButtonGroup>
         </div>
         <div class="product-subtotal">
           <span
@@ -48,15 +68,6 @@
             }}</span
           >
         </div>
-        <!-- <div class="product-remove">
-          <UButton
-            size="2xs"
-            variant="outline"
-            color="red"
-            :label="'移除'"
-            @click="() => store.removeFromCart(productName, parseInt(option))"
-          ></UButton>
-        </div> -->
       </div>
     </div>
   </div>
@@ -108,8 +119,8 @@ const store = useStore();
 }
 
 .product-img {
-  max-width: calc(25vw + 10px);
-  max-height: calc(25vw + 10px);
+  max-width: calc(23vw + 5px);
+  max-height: calc(23vw + 5px);
 }
 
 .product-img img {
@@ -129,8 +140,9 @@ const store = useStore();
 
 .product-name {
   margin-top: 0.2rem;
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.1rem;
   padding-left: 1rem;
+  padding-bottom: 0.5rem;
   font-size: medium;
   font-weight: 500;
 }
@@ -144,22 +156,18 @@ const store = useStore();
   font-size: small;
 }
 
-.product-info div {
-  margin-right: 1rem;
-}
-
 .product-info div span {
   text-align: left;
 }
 
 .product-option {
   padding-left: 1.2rem;
-  width: 27%;
+  width: 32%;
   text-align: left;
 }
 
 .product-count {
-  width: 15%;
+  width: 35%;
 }
 
 .product-subtotal {
