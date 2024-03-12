@@ -33,7 +33,8 @@
             }"
           >
             <UButton
-              variant="variant"
+              color="gray"
+              variant="ghost"
               icon="i-heroicons-minus-small"
               square
               :onClick="
