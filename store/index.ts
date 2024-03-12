@@ -32,6 +32,13 @@ interface Cart {
   };
 }
 
+interface CartOption {
+  name: string;
+  price: number;
+  count: number;
+  subtotal: number;
+}
+
 interface State {
   cart: Cart;
   isLoading: boolean;
@@ -178,6 +185,38 @@ export const useStore = defineStore("store", {
     },
     getCart(): Cart {
       return this.cart;
+    },
+    getCartOptions(): Object[] {
+      const options = [];
+      for (const productName in this.cart) {
+        if (!this.products[productName]) continue;
+        for (const option in this.cart[productName]) {
+          if (this.products[productName].options.length === 0) {
+            const price = this.products[productName].price.min;
+            options.push({
+              name: productName,
+              price: price,
+              count: this.cart[productName][option],
+              subtotal: price * this.cart[productName][option],
+            });
+          } else {
+            const price =
+              this.products[productName].options[option].price ||
+              this.products[productName].price.min;
+            options.push({
+              name:
+                productName +
+                " " +
+                (this.products[productName].options[option].name || ""),
+              price: price,
+              count: this.cart[productName][option],
+              subtotal: price * this.cart[productName][option],
+            });
+          }
+        }
+      }
+      return options;
+      return [{ name: "test", price: 100, count: 1, subtotal: 100 }];
     },
   },
   persist: {
