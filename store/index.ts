@@ -70,6 +70,34 @@ export const useStore = defineStore("store", {
         };
       }
     },
+    addOneToCart(productName: string, options: number) {
+      if (options === -1) options = 0;
+      if (this.cart[`${productName}`]) {
+        if (this.cart[`${productName}`][options]) {
+          this.cart[`${productName}`][options]++;
+        } else {
+          this.cart[`${productName}`][options] = 1;
+        }
+      } else {
+        this.cart[`${productName}`] = {
+          [options]: 1,
+        };
+      }
+    },
+    minusOneToCart(productName: string, options: number) {
+      if (options === -1) options = 0;
+      if (this.cart[`${productName}`]) {
+        if (this.cart[`${productName}`][options]) {
+          this.cart[`${productName}`][options]--;
+          if (this.cart[`${productName}`][options] === 0) {
+            delete this.cart[`${productName}`][options];
+          }
+          if (Object.keys(this.cart[`${productName}`]).length === 0) {
+            delete this.cart[`${productName}`];
+          }
+        }
+      }
+    },
     removeFromCart(productName: string, options: number) {
       console.log(productName, options);
       if (this.cart[`${productName}`]) {
@@ -146,6 +174,9 @@ export const useStore = defineStore("store", {
     },
     getProduct(): Product | null {
       return this.products[`${this.tmpProductName}`] || null;
+    },
+    getCart(): Cart {
+      return this.cart;
     },
   },
   persist: {
