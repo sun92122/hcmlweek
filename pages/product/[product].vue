@@ -63,13 +63,14 @@
             orientation="horizontal"
             size="md"
             :ui="{
-              rounded: false,
+              rounded: 'rounded-md',
             }"
           >
             <UButton
               color="gray"
               variant="solid"
-              :label="'－'"
+              icon="i-heroicons-minus-small"
+              square
               @click="
                 () => {
                   cartCount = Math.max(1, Math.floor(cartCount) - 1);
@@ -95,7 +96,8 @@
             <UButton
               color="gray"
               variant="solid"
-              :label="'＋'"
+              icon="i-heroicons-plus-small"
+              square
               @click="
                 () => {
                   cartCount = Math.min(9, Math.floor(cartCount) + 1);
