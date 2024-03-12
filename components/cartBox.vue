@@ -8,6 +8,7 @@
           sizes="40vw"
           fit="inside"
           :modifiers="{ roundCorner: '50' }"
+          loading="lazy"
         />
       </NuxtLink>
     </div>

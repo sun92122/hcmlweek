@@ -7,6 +7,7 @@
             product.image ? product.image : 'https://via.placeholder.com/150'
           "
           :alt="productName"
+          loading="lazy"
         />
       </div>
       <div class="product-info-container">

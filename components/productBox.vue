@@ -4,6 +4,7 @@
       <NuxtImg
         :src="ProductImage ? ProductImage : 'https://via.placeholder.com/150'"
         alt="product"
+        loading="lazy"
       />
     </div>
     <div class="product-info">
