@@ -28,4 +28,17 @@ export default defineNuxtConfig({
   pinia: {
     storesDirs: ["~/store/**"],
   },
+  piniaPersistedstate: {
+    cookieOptions: {
+      path: "/",
+      // 1 month
+      maxAge: 30 * 24 * 60 * 60,
+      sameSite: true,
+    },
+  },
+
+  colorMode: {
+    preference: "system",
+    fallback: "light",
+  },
 });
