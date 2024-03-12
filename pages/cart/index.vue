@@ -36,7 +36,9 @@
         </div>
         <UDivider />
         <div class="cart-total">
-          <span class="text-3xl" v-if="total > 0">合計：NT ${{ total }}</span>
+          <span class="text-3xl" v-if="total > 0"
+            >合計：NT ${{ store.getTotal }}</span
+          >
         </div>
         <div class="next-button-container" v-if="total > 0">
           <UButton
