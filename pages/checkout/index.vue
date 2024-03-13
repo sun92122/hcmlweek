@@ -62,9 +62,38 @@ const links = [
     label: "填寫聯絡資料",
   },
 ];
-console.log(store.cart);
-console.log(store.getTotal);
-console.log(store.getCartOptions);
+
+const cartOptions = computed(() => {
+  const cartTmp = [];
+  const cart = store.cart;
+  const products = store.products;
+  for (const productName in cart) {
+    if (!products[productName]) continue;
+    if (products[productName].options.length <= 1) {
+      cartTmp.push({
+        name: productName,
+        price: products[productName].price.min,
+        count: cart[productName][0],
+        subtotal: products[productName].price.min * cart[productName][0],
+      });
+    } else {
+      for (const option in cart[productName]) {
+        cartTmp.push({
+          name:
+            productName +
+            " - " +
+            products[productName].options[option].name,
+          price: products[productName].options[option].price,
+          count: cart[productName][option],
+          subtotal:
+            (products[productName].options[option].price ||
+              products[productName].price.min) * cart[productName][option],
+        });
+      }
+    }
+  }
+  return cartTmp;
+});
 </script>
 
 <template>
@@ -103,14 +132,13 @@ console.log(store.getCartOptions);
         <span class="text-2xl">購物車詳情</span>
       </div>
       <UTable
-        :rows="[{ name: 'test', price: 100, count: 1, subtotal: 100 }]"
+        :rows="cartOptions"
         :columns="[
           { key: 'name', label: '商品' },
           { key: 'price', label: '價格' },
           { key: 'count', label: '數量' },
           { key: 'subtotal', label: '小計' },
         ]"
-        loading
       >
         <template #price="{ row }">
           <span>NT ${{ row.price }}</span>
@@ -298,7 +326,7 @@ console.log(store.getCartOptions);
 .input-label--active {
   padding-top: 0.2rem;
   padding-bottom: 0.2rem;
-  font-size: 0.77rem;
+  font-size: 0.65rem;
   color: #adb5bd;
 }
 </style>
