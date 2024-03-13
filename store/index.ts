@@ -13,13 +13,13 @@ interface Product {
   };
   noted: string;
   image: string;
+  description: string | null;
+  tags: string[] | null;
   options: {
     name: string | null;
     price: number | null;
     tag: string | null;
   }[];
-  description: string | null;
-  tags: string[] | null;
 }
 
 interface Products {
@@ -32,11 +32,8 @@ interface Cart {
   };
 }
 
-interface CartOption {
-  name: string;
-  price: number;
-  count: number;
-  subtotal: number;
+interface Tag {
+  label: string;
 }
 
 interface State {
@@ -185,6 +182,29 @@ export const useStore = defineStore("store", {
     },
     getCart(): Cart {
       return this.cart;
+    },
+    getTags(): Tag[] {
+      const tags: string[] = [];
+      for (const productName in this.products) {
+        const productTags = this.products[productName].tags;
+        if (
+          productTags &&
+          Array.isArray(productTags) &&
+          productTags.length > 0
+        ) {
+          for (const tag of productTags) {
+            if (!tags.includes(tag)) {
+              tags.push(tag);
+            }
+          }
+        }
+      }
+      const outputTags: Tag[] = [];
+      outputTags.push({ label: "所有商品" });
+      for (const tag of tags) {
+        outputTags.push({ label: tag });
+      }
+      return outputTags;
     },
   },
   persist: {
