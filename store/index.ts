@@ -45,6 +45,7 @@ interface State {
   tmpOptionIndex: number;
   cartCount: number;
   apiURL: string;
+  nowTag: string;
 }
 
 export const useStore = defineStore("store", {
@@ -58,6 +59,7 @@ export const useStore = defineStore("store", {
       tmpOptionIndex: -1,
       cartCount: 1,
       apiURL: API_URL,
+      nowTag: "所有商品",
     } as unknown as State),
   actions: {
     addToCart(productName: string, options: number, count: number) {
@@ -146,6 +148,9 @@ export const useStore = defineStore("store", {
     resetCartCount() {
       this.cartCount = 1;
     },
+    setNowTag(tag: string) {
+      this.nowTag = tag;
+    },
   },
   getters: {
     getTotal() {
@@ -193,6 +198,7 @@ export const useStore = defineStore("store", {
           productTags.length > 0
         ) {
           for (const tag of productTags) {
+            if (tag.trim().length === 0) continue;
             if (!tags.includes(tag)) {
               tags.push(tag);
             }
@@ -205,6 +211,9 @@ export const useStore = defineStore("store", {
         outputTags.push({ label: tag });
       }
       return outputTags;
+    },
+    getNowTag(): string {
+      return this.nowTag;
     },
   },
   persist: {

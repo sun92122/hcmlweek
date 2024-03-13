@@ -1,10 +1,12 @@
 <template>
-  <div>
-    <UHorizontalNavigation :links="productTags">
+  <div class="page-container">
+    <UHorizontalNavigation :links="productTags" class="px-6">
       <template #default="{ link }">
-        <UButton @click="nowTag = link.label" color="violet" variant="link">{{
-          link.label
-        }}</UButton>
+        <ULink
+          class="group-hover:text-primary relative"
+          @click="() => store.setNowTag(link.label)"
+          >{{ link.label }}</ULink
+        >
       </template>
     </UHorizontalNavigation>
     <div class="product-container">
@@ -12,8 +14,8 @@
         <productBox
           v-for="(product, productName) in tmpProducts"
           v-show="
-            nowTag === '所有商品' ||
-            (product.tags && product.tags.includes(nowTag))
+            getNowTag === '所有商品' ||
+            (product.tags && product.tags.includes(getNowTag))
           "
           :-product-image="product.image"
           :-product-name="productName"
@@ -59,9 +61,9 @@ if (Object.keys(tmpProducts).length === 0) {
   console.log("no need to fetch");
   const products = tmpProducts;
 }
-console.log(store.products);
 const productTags = store.getTags;
-const nowTag = "所有商品";
+store.nowTag = "所有商品";
+const getNowTag = computed(() => store.getNowTag);
 </script>
 
 <style scoped>
