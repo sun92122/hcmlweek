@@ -113,13 +113,13 @@ const getNowTag = computed(() => store.getNowTag);
   width: auto;
 }
 
-@media screen and (min-width: 685px) {
+@media screen and (min-width: 695px) {
   .product-container {
     padding: 0 calc((100% - 630px - 3rem) / 2) 0;
   }
 }
 
-@media screen and (min-width: 915px) {
+@media screen and (min-width: 925px) {
   .product-container {
     padding: 0 calc((100% - 840px - 4rem) / 2) 0;
   }
