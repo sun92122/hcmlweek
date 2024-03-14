@@ -152,6 +152,7 @@ const store = useStore();
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  align-items: center;
   width: 100%;
   margin-top: 0.5rem;
   font-size: small;
@@ -163,7 +164,7 @@ const store = useStore();
 
 .product-option {
   padding-left: 1.2rem;
-  width: 32%;
+  width: 35%;
   text-align: left;
 }
 
