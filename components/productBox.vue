@@ -106,7 +106,13 @@ export default defineComponent({
 }
 
 .product-noted {
-  font-size: x-small;
+  font-size: small;
+}
+
+@media screen and (min-width: 400px) {
+  .product-noted {
+    font-size: 90%;
+  }
 }
 
 .product-name .product-price {
