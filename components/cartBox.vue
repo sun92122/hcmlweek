@@ -121,8 +121,7 @@ const store = useStore();
 }
 
 .product-img {
-  max-width: calc(23vw + 5px);
-  max-height: calc(23vw + 5px);
+  max-width: calc(5% + 70px);
 }
 
 .product-img img {
