@@ -70,11 +70,14 @@ export default defineComponent({
   border-radius: 10px;
   box-shadow: 0 0 10px 0 rgba(250, 101, 255, 0.312);
   margin: 0.5rem 0.5rem 0;
+  max-width: 210px;
 }
 
 .product-img {
   width: 42vw;
+  max-width: 210px;
   height: 42vw;
+  max-height: 210px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -82,6 +85,7 @@ export default defineComponent({
 
 .product-img img {
   width: 90%;
+  max-width: 189px;
   height: 90%;
   border-radius: 5%;
 }
