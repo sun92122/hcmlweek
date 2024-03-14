@@ -106,6 +106,10 @@ const total = store.getTotal;
   font-size: x-large;
 }
 
+.cart-empty-container h2 {
+  margin-bottom: 1rem;
+}
+
 .title-container {
   display: flex;
   flex-direction: column;
