@@ -1,8 +1,8 @@
 <template>
+  <UContainer>
+    <USkeleton class="banner-container" />
+  </UContainer>
   <div class="homepage-container">
-    <UContainer>
-      <USkeleton class="banner-container" />
-    </UContainer>
     <UHorizontalNavigation
       :links="productTags"
       class="nav-container"
@@ -81,7 +81,7 @@ const getNowTag = computed(() => store.getNowTag);
 
 .banner-container {
   padding: 0 0 0;
-  width: 100vw;
+  width: 100%;
   height: 33vw;
   margin: auto;
 }
