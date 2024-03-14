@@ -36,9 +36,7 @@
         </div>
         <UDivider />
         <div class="cart-total">
-          <span class="text-3xl" v-if="total > 0"
-            >合計：NT ${{ store.getTotal }}</span
-          >
+          <span v-if="total > 0">合計：NT ${{ store.getTotal }}</span>
         </div>
         <div class="next-button-container" v-if="total > 0">
           <UButton
@@ -128,6 +126,24 @@ const total = store.getTotal;
   padding-right: 1rem;
   width: 100%;
   font-size: small;
+}
+
+.cart-total {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 2rem;
+  font-size: 1.875rem;
+  line-height: 2.25rem;
+}
+
+@media screen and (max-width: 375px) {
+  .cart-total {
+    margin-top: 1rem;
+    font-size: 1.5rem;
+    line-height: 2rem;
+  }
 }
 
 .next-button-container {
