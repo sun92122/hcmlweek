@@ -13,7 +13,7 @@ interface Product {
   };
   noted: string;
   image: string;
-  description: string | null;
+  description: string[] | null;
   tags: string[] | null;
   options: {
     name: string | null;

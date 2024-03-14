@@ -142,7 +142,10 @@
         <ULink to="/">
           <span class="back-link underline">&lt; 返回首頁</span>
         </ULink>
-        <span v-html="product.description ? product.description : ''"></span>
+        <span
+          v-for="description in product.description"
+          v-html="description ? description : ''"
+        ></span>
       </div>
     </div>
     <div v-else>
