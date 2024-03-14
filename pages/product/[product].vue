@@ -127,7 +127,7 @@
       </div>
       <div class="product-description-container">
         <ULink to="/">
-          <span class="back-link">&lt; 返回首頁</span>
+          <span class="back-link underline">&lt; 返回首頁</span>
         </ULink>
         <span v-html="product.description ? product.description : ''"></span>
       </div>
@@ -136,7 +136,7 @@
       <h1 class="text-center w-full text-3xl">Loading...</h1>
       <div class="product-description-container">
         <ULink to="/">
-          <span class="back-link">&lt; 返回首頁</span>
+          <span class="back-link underline">&lt; 返回首頁</span>
         </ULink>
       </div>
     </div>
@@ -363,9 +363,10 @@ input {
 }
 
 .product-description-container * {
+  font-family: "Noto Serif TC", serif;
   text-align: left;
   font-size: large;
-  font-weight: 500;
+  font-weight: 400;
   margin-top: 1rem;
 }
 

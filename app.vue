@@ -39,4 +39,8 @@ useHead({
   opacity: 0;
   filter: blur(1rem);
 }
+
+.underline {
+  text-decoration: underline;
+}
 </style>
