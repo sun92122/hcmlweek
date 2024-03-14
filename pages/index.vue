@@ -94,7 +94,7 @@ const getNowTag = computed(() => store.getNowTag);
 
 @media screen and (min-width: 915px) {
   .product-container {
-    padding: 0 calc((100% - 840px - 4rem) / 2), calc() 0;
+    padding: 0 calc((100% - 840px - 4rem) / 2) 0;
   }
 }
 
