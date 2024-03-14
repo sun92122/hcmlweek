@@ -4,7 +4,11 @@
     <UHorizontalNavigation
       :links="links"
       class="border-b border-gray-200 dark:border-gray-800 sticky top-0 z-10 bg-white dark:bg-gray-900"
-    />
+    >
+      <template #icon="{ link }">
+        <UIcon :name="link.icon" :dynamic="link.icon === 'i-bi-instagram'" />
+      </template>
+    </UHorizontalNavigation>
 
     <!-- cart icon -->
 
@@ -14,7 +18,7 @@
     </div>
 
     <!-- footer -->
-    <footer class="bg-light py-2 text-center">
+    <footer class="bg-light py-2 text-center mt-3">
       <p>&copy; 2024 NTNU HCML WEEK</p>
     </footer>
   </div>
@@ -47,6 +51,14 @@ export default {
           {
             label: "Help",
             icon: "i-heroicons-question-mark-circle",
+          },
+          {
+            label: "IG",
+            icon: "i-bi-instagram",
+            // to: "https://www.instagram.com/hcmlweek" new tab
+            click: () => {
+              window.open("https://www.instagram.com/hcmlweek", "_blank");
+            },
           },
         ],
         [
