@@ -74,6 +74,7 @@
               square
               @click="
                 () => {
+                  if (!Number.isInteger(cartCount)) cartCount = 1;
                   cartCount = Math.max(1, Math.floor(cartCount) - 1);
                 }
               "
@@ -84,15 +85,25 @@
               color="gray"
               variant="outline"
               placeholder="?"
-              type="number"
-              max="9"
-              min="1"
-              step="1"
+              type="text"
               v-model="cartCount"
               :ui="{
                 rounded: false,
                 base: 'text-center',
+                color: {
+                  gray: {
+                    outline:
+                      Number.isInteger(cartCount) && cartCount > 0
+                        ? null
+                        : 'ring-red-500 dark:ring-red-400',
+                  },
+                },
               }"
+              @input="
+                (e: any) => {
+                  cartCount = Math.min(99, Math.floor(e.target.value));
+                }
+              "
             ></UInput>
             <UButton
               color="gray"
@@ -102,6 +113,7 @@
               @click="
                 () => {
                   cartCount = Math.min(9, Math.floor(cartCount) + 1);
+                  if (!Number.isInteger(cartCount)) cartCount = 1;
                 }
               "
               :disabled="cartCount >= 9"
@@ -119,7 +131,8 @@
                   tmpOptionIndex,
                   cartCount,
                   product.options.length
-                )
+                );
+                cartCount = 1;
               "
             ></UButton>
           </div>
@@ -156,7 +169,12 @@ export default {
   },
   methods: {
     addToCart(name: string, index: number, count: number, optNum: number) {
-      if (count === 0) {
+      if (!Number.isInteger(count) || count < 1) {
+        this.toast.add({
+          title: "請輸入數量",
+          description: "請輸入正確的數量",
+          timeout: 2500,
+        });
         return;
       }
 
@@ -234,6 +252,8 @@ div {
   flex-direction: column;
   align-items: flex-start;
   width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
   padding: 2rem;
 }
 
@@ -337,13 +357,13 @@ div {
 /* Chrome, Safari, Edge, Opera */
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
+  -webkit-appearance: none !important;
+  margin: 0 !important;
 }
 
-input {
-  -moz-appearance: "textfield";
-  appearance: "textfield";
+input[type="number"] {
+  -moz-appearance: textfield !important;
+  appearance: textfield !important;
 }
 
 .add-to-cart-container {
@@ -370,9 +390,48 @@ input {
   margin-top: 1rem;
 }
 
-@media screen and (min-aspect-ratio: 4/3) {
-  .product-name-container span .product-price-container span {
-    font-size: 2.5rem;
+@media screen and (max-width: 400px) {
+  .product-page-container {
+    padding: 1rem;
+  }
+}
+
+@media screen and (min-width: 650px) {
+  .product-page-container {
+    max-width: 800px;
+  }
+
+  .product-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+
+  .product-img {
+    width: 45%;
+    max-width: 45%;
+    height: 45%;
+    max-height: 45%;
+  }
+
+  .product-info-container {
+    width: 50%;
+    max-width: 50%;
+    height: 100%;
+    padding-left: 2rem;
+  }
+
+  .count-container {
+    justify-content: space-between;
+  }
+
+  .count-container div {
+    max-width: 50%;
+  }
+
+  .add-to-cart-container {
+    width: 30%;
   }
 }
 </style>
