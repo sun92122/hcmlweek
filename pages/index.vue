@@ -101,7 +101,7 @@ const getNowTag = computed(() => store.getNowTag);
 .product-container {
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: flex-start;
   justify-content: center;
   padding: 0 max(calc(50% - 42vw - 1rem), calc(50% - 210px - 1rem)) 0;
 }
