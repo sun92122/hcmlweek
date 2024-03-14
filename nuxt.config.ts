@@ -28,6 +28,7 @@ export default defineNuxtConfig({
     "@nuxtjs/color-mode",
     "@pinia/nuxt",
     "@pinia-plugin-persistedstate/nuxt",
+    "@nuxtjs/google-fonts",
   ],
 
   pinia: {
@@ -39,6 +40,13 @@ export default defineNuxtConfig({
       // 1 month
       maxAge: 30 * 24 * 60 * 60,
       sameSite: true,
+    },
+  },
+
+  googleFonts: {
+    families: {
+      "Noto+Sans+TC": [400, 700],
+      "Noto+Serif+TC": [400, 700],
     },
   },
 

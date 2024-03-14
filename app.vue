@@ -20,11 +20,8 @@ useHead({
 </script>
 
 <style>
-@import url(//fonts.googleapis.com/earlyaccess/notosanstc.css);
-
 #app {
-  font-family: "Noto Sans TC", "Helvetica", "Arial", "LiHei Pro", "黑體-繁",
-    "微軟正黑體", sans-serif;
+  font-family: "Noto Sans TC", "Noto Serif TC", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
