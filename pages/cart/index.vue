@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="cartpage-container">
     <div class="cart-container">
       <div v-if="!Object.keys(cart).length" class="cart-empty-container">
         <h2>購物車是空的</h2>
@@ -89,6 +89,10 @@ const total = store.getTotal;
 </script>
 
 <style scoped>
+.cartpage-container {
+  padding: 0 calc(50vw - 350px) 0;
+}
+
 .cart-container {
   margin-top: 2rem;
 }
