@@ -1,10 +1,18 @@
 <template>
   <div class="homepage-container">
-    <UHorizontalNavigation :links="productTags" class="px-6">
+    <UContainer>
+      <USkeleton :rows="3" :rowHeight="200" :rowWidth="200" />
+    </UContainer>
+    <UHorizontalNavigation
+      :links="productTags"
+      class="nav-container"
+      :ui="{ container: 'flex-wrap' }"
+    >
       <template #default="{ link }">
         <ULink
           class="group-hover:text-primary relative"
           @click="() => store.setNowTag(link.label)"
+          :active="link.label === getNowTag"
           >{{ link.label }}</ULink
         >
       </template>
@@ -69,6 +77,18 @@ const getNowTag = computed(() => store.getNowTag);
 <style scoped>
 .homepage-container {
   padding: 0 calc(50vw - 500px) 0;
+}
+
+.nav-container {
+  padding: 0 1rem 0;
+  width: 98vw;
+  margin: auto;
+}
+
+@media screen and (min-width: 685px) {
+  .homepage-container {
+    padding: 0 calc(50vw - 630px) 0;
+  }
 }
 
 .product-container {
