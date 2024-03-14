@@ -1,12 +1,5 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
-  build: {
-    analyze: true,
-    // assetFilter: (assetFilename: string) => {
-    //   return assetFilename.endsWith(".js") || assetFilename.endsWith(".css");
-    // },
-  },
-
   nitro: {
     prerender: {
       autoSubfolderIndex: false,
