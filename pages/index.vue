@@ -1,5 +1,5 @@
 <template>
-  <div class="page-container">
+  <div class="homepage-container">
     <UHorizontalNavigation :links="productTags" class="px-6">
       <template #default="{ link }">
         <ULink
@@ -67,12 +67,16 @@ const getNowTag = computed(() => store.getNowTag);
 </script>
 
 <style scoped>
+.homepage-container {
+  padding: 0 calc(50vw - 500px) 0;
+}
+
 .product-container {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding-left: calc(8vw - 1rem);
+  padding: 0 max(calc(50% - 42vw - 1rem), calc(50% - 210px - 1rem)) 0;
 }
 
 .product-container div {
@@ -82,19 +86,21 @@ const getNowTag = computed(() => store.getNowTag);
   width: auto;
 }
 
-@media screen and (min-width: 768px) {
+@media screen and (min-width: 685px) {
   .product-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+    padding: 0 calc((100% - 630px - 3rem) / 2) 0;
   }
+}
 
-  .product-container div {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: flex-start;
-    width: auto;
+@media screen and (min-width: 915px) {
+  .product-container {
+    padding: 0 calc((100% - 840px - 4rem) / 2), calc() 0;
+  }
+}
+
+@media screen and (min-width: 1000px) {
+  .product-container {
+    padding: 0 calc((100% - 840px - 4rem) / 2) 0;
   }
 }
 </style>
