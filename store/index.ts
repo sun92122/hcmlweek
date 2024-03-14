@@ -104,49 +104,11 @@ export const useStore = defineStore("store", {
         }
       }
     },
-    removeFromCart(productName: string, options: number) {
-      console.log(productName, options);
-      if (this.cart[`${productName}`]) {
-        if (this.cart[`${productName}`][options]) {
-          delete this.cart[`${productName}`][options];
-        }
-        if (Object.keys(this.cart[`${productName}`]).length === 0) {
-          delete this.cart[`${productName}`];
-        }
-      }
-    },
-    async getProductsFromAPI() {
-      // API_URL/getProducts => (json) => products
-      await fetch(`${API_URL}`).then(async (res) => {
-        this.products = await res.json();
-      });
-    },
-    async getProductFromAPI(productName: string) {
-      // API_URL/getProduct?name=productName => (json) => product
-      await fetch(`${API_URL}?name=${productName}`)
-        .then(async (res) => {
-          this.tmpProduct = await res.json();
-          if (
-            !this.tmpProduct ||
-            !this.tmpProduct.price ||
-            !this.tmpProduct.price.min
-          )
-            return false;
-          return true;
-        })
-        .catch((err) => {
-          console.error(err);
-        });
-      return false;
-    },
     goToProduct(productName: string) {
       this.tmpProduct = this.products[`${productName}`];
     },
     resetTmpObjectIndex() {
       this.tmpOptionIndex = -1;
-    },
-    resetCartCount() {
-      this.cartCount = 1;
     },
     setNowTag(tag: string) {
       this.nowTag = tag;
