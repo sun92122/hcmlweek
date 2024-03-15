@@ -73,6 +73,8 @@ state.lottery = canLottery;
 async function onSubmit(event: FormSubmitEvent<Schema>) {
   // Do something with data
   console.log(event.data);
+
+  router.push("/confirm");
 }
 
 const links = [
@@ -131,7 +133,7 @@ onBeforeRouteLeave(() => {
 </script>
 
 <template>
-  <div class="checkout-container rounded font-sans">
+  <div class="checkout-container font-sans">
     <div class="checkout-header">
       <UBreadcrumb :links="links" :divider="null" :ui="{ ol: 'gap-x-3' }">
         <template #icon="{ link, index, isActive }">
@@ -154,7 +156,7 @@ onBeforeRouteLeave(() => {
       <UBreadcrumb
         :links="[{ label: '確認訂單' }, { label: '' }]"
         :divider="null"
-        class="mx-1"
+        class="mx-3"
       >
         <template #icon="{ link, index, isActive }">
           <UAvatar v-if="index === 0" :alt="(index + 3).toString()" size="xs" />
