@@ -351,17 +351,18 @@ const cartOptions = computed(() => {
         :placeholder="'出了點狀況？\n返回購物車修改吧！\n\n如果持續發生問題，請聯絡我們！'"
         @change="state.pickupinfo = store.getPickupInfo"
       ></UTextarea>
-
+      
       <div class="form-subtitle">
         <span class="text-2xl">訂單備註</span>
       </div>
       <UTextarea
         v-model="state.remarks"
         :ui="{ default: { size: 'xl', variant: 'outline' } }"
-        inputClass="bg-white dark:bg-gray-800 py-4"
+        :rows="3"
+        autoresize
+        textareaClass="bg-white dark:bg-gray-800"
         placeholder="留言給竹苗！"
-      >
-      </UTextarea>
+      ></UTextarea>
 
       <div class="next-button-container">
         <UButton
