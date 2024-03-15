@@ -173,7 +173,6 @@ const cartOptions = computed(() => {
           >
         </template>
       </UFormGroup>
-
       <UFormGroup label="" name="major">
         <template #default>
           <UInput
@@ -198,7 +197,6 @@ const cartOptions = computed(() => {
           >
         </template>
       </UFormGroup>
-
       <UFormGroup name="phone">
         <template #default>
           <UInput
@@ -223,7 +221,6 @@ const cartOptions = computed(() => {
           >
         </template>
       </UFormGroup>
-
       <UFormGroup label="" name="email">
         <template #default>
           <UInput
@@ -248,6 +245,7 @@ const cartOptions = computed(() => {
           >
         </template>
       </UFormGroup>
+
       <div class="form-subtitle">
         <span class="text-2xl">取貨資料</span>
       </div>
