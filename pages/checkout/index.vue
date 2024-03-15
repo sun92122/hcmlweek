@@ -268,80 +268,78 @@ const cartOptions = computed(() => {
         <UToggle v-model="state.pickup" class="mx-3" />
         <span class="text-md">委託他人取貨</span>
       </div>
-      <div v-show="state.pickup">
-        <UFormGroup label="" name="pickupname">
-          <template #default>
-            <UInput
-              v-model="state.pickupname"
-              :ui="{ default: { size: 'xl', variant: 'outline' } }"
-              inputClass="bg-white dark:bg-gray-800 py-4"
+      <UFormGroup name="pickupname" v-show="state.pickup">
+        <template #default>
+          <UInput
+            v-model="state.pickupname"
+            :ui="{ default: { size: 'xl', variant: 'outline' } }"
+            inputClass="bg-white dark:bg-gray-800 py-4"
+          >
+            <label
+              :class="[
+                state.pickupname
+                  ? 'text-gray-400 dark:text-gray-500 input-label input-label--active'
+                  : 'text-gray-400 dark:text-gray-500 input-label',
+              ]"
+              >取貨人姓名</label
             >
-              <label
-                :class="[
-                  state.pickupname
-                    ? 'text-gray-400 dark:text-gray-500 input-label input-label--active'
-                    : 'text-gray-400 dark:text-gray-500 input-label',
-                ]"
-                >取貨人姓名</label
-              >
-            </UInput>
-          </template>
-          <template #error="props">
-            <span
-              class="text-red-500 dark:text-red-400 text-xs text-left block w-full"
-              >{{ props.error }}</span
+          </UInput>
+        </template>
+        <template #error="props">
+          <span
+            class="text-red-500 dark:text-red-400 text-xs text-left block w-full"
+            >{{ props.error }}</span
+          >
+        </template>
+      </UFormGroup>
+      <UFormGroup name="pickupphone" v-show="state.pickup">
+        <template #default>
+          <UInput
+            v-model="state.pickupphone"
+            :ui="{ default: { size: 'xl', variant: 'outline' } }"
+            inputClass="bg-white dark:bg-gray-800 py-4"
+          >
+            <label
+              :class="[
+                state.pickupphone
+                  ? 'text-gray-400 dark:text-gray-500 input-label input-label--active'
+                  : 'text-gray-400 dark:text-gray-500 input-label',
+              ]"
+              >取貨人電話號碼</label
             >
-          </template>
-        </UFormGroup>
-        <UFormGroup name="pickupphone">
-          <template #default>
-            <UInput
-              v-model="state.pickupphone"
-              :ui="{ default: { size: 'xl', variant: 'outline' } }"
-              inputClass="bg-white dark:bg-gray-800 py-4"
+          </UInput>
+        </template>
+        <template #error="props">
+          <span
+            class="text-red-500 dark:text-red-400 text-xs text-left block w-full"
+            >{{ props.error }}</span
+          >
+        </template>
+      </UFormGroup>
+      <UFormGroup name="pickupemail" v-show="state.pickup">
+        <template #default>
+          <UInput
+            v-model="state.pickupemail"
+            :ui="{ default: { size: 'xl', variant: 'outline' } }"
+            inputClass="bg-white dark:bg-gray-800 py-4"
+          >
+            <label
+              :class="[
+                state.pickupemail
+                  ? 'text-gray-400 dark:text-gray-500 input-label input-label--active'
+                  : 'text-gray-400 dark:text-gray-500 input-label',
+              ]"
+              >取貨人 Email</label
             >
-              <label
-                :class="[
-                  state.pickupphone
-                    ? 'text-gray-400 dark:text-gray-500 input-label input-label--active'
-                    : 'text-gray-400 dark:text-gray-500 input-label',
-                ]"
-                >取貨人電話號碼</label
-              >
-            </UInput>
-          </template>
-          <template #error="props">
-            <span
-              class="text-red-500 dark:text-red-400 text-xs text-left block w-full"
-              >{{ props.error }}</span
-            >
-          </template>
-        </UFormGroup>
-        <UFormGroup label="" name="pickupemail">
-          <template #default>
-            <UInput
-              v-model="state.pickupemail"
-              :ui="{ default: { size: 'xl', variant: 'outline' } }"
-              inputClass="bg-white dark:bg-gray-800 py-4"
-            >
-              <label
-                :class="[
-                  state.pickupemail
-                    ? 'text-gray-400 dark:text-gray-500 input-label input-label--active'
-                    : 'text-gray-400 dark:text-gray-500 input-label',
-                ]"
-                >取貨人 Email</label
-              >
-            </UInput>
-          </template>
-          <template #error="props">
-            <span
-              class="text-red-500 dark:text-red-400 text-xs text-left block w-full"
-              >{{ props.error }}</span
-            >
-          </template>
-        </UFormGroup>
-      </div>
+          </UInput>
+        </template>
+        <template #error="props">
+          <span
+            class="text-red-500 dark:text-red-400 text-xs text-left block w-full"
+            >{{ props.error }}</span
+          >
+        </template>
+      </UFormGroup>
       <UTextarea
         v-model="state.pickupinfo"
         :ui="{ default: { size: 'xl', variant: 'none' } }"
@@ -351,7 +349,7 @@ const cartOptions = computed(() => {
         :placeholder="'出了點狀況？\n返回購物車修改吧！\n\n如果持續發生問題，請聯絡我們！'"
         @change="state.pickupinfo = store.getPickupInfo"
       ></UTextarea>
-      
+
       <div class="form-subtitle">
         <span class="text-2xl">訂單備註</span>
       </div>
