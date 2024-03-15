@@ -2,8 +2,17 @@
 import { z } from "zod";
 import type { FormSubmitEvent } from "#ui/types";
 import { useStore } from "~/store";
+import { useRouter } from "vue-router";
 
 const store = useStore();
+const router = useRouter();
+
+if (
+  Object.keys(store.products).length === 0 ||
+  Object.keys(store.cart).length === 0
+) {
+  router.push("/");
+}
 
 const schema = z.object({
   // Name is required
