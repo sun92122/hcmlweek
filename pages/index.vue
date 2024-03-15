@@ -10,11 +10,14 @@
     <UHorizontalNavigation
       :links="productTags"
       class="nav-container"
-      :ui="{ container: 'flex-wrap' }"
+      :ui="{ container: 'flex-wrap', base: 'py-2' }"
     >
       <template #default="{ link }">
         <ULink
-          :class="['group-hover:text-primary relative', link.label === getNowTag && 'text-primary']"
+          :class="[
+            'group-hover:text-primary relative',
+            link.label === getNowTag && 'text-primary',
+          ]"
           @click="() => store.setNowTag(link.label)"
           >{{ link.label }}</ULink
         >
