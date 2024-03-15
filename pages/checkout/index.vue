@@ -106,6 +106,16 @@ const cartOptions = computed(() => {
   }
   return cartTmp;
 });
+
+const cartNum = computed(() => {
+  let num = 0;
+  for (const productName in store.cart) {
+    for (const option in store.cart[productName]) {
+      num += store.cart[productName][option];
+    }
+  }
+  return num;
+});
 </script>
 
 <template>
@@ -142,6 +152,9 @@ const cartOptions = computed(() => {
     <UForm :schema="schema" :state="state" class="space-y-4" @submit="onSubmit">
       <div class="form-subtitle">
         <span class="text-2xl">購物車詳情</span>
+        <span class="text-md"
+          >共 {{ cartNum }} 項商品，總金額 NT ${{ store.getTotal }}</span
+        >
       </div>
       <UTable
         :rows="cartOptions"
@@ -391,6 +404,9 @@ const cartOptions = computed(() => {
 }
 
 .form-subtitle {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
   text-align: left;
   margin: 1rem 0 1rem;
 }
