@@ -10,7 +10,20 @@
       </template>
     </UHorizontalNavigation>
 
-    <!-- cart icon -->
+    <!-- announcement -->
+    <UModal v-model="showAnnouncement">
+      <UCard>
+        <template #header>
+          <div class="h-8">Header</div>
+        </template>
+
+        <div class="h-32">Content</div>
+
+        <template #footer>
+          <div class="h-8">Footer</div>
+        </template>
+      </UCard>
+    </UModal>
 
     <!-- shop -->
     <div class="page-container">
@@ -84,7 +97,9 @@ export default {
 };
 </script>
 
-<script setup lang="ts"></script>
+<script setup lang="ts">
+const showAnnouncement = ref(true);
+</script>
 
 <style>
 .wrapper {
