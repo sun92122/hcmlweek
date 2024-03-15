@@ -80,9 +80,7 @@ const cartOptions = computed(() => {
       for (const option in cart[productName]) {
         cartTmp.push({
           name:
-            productName +
-            " - " +
-            products[productName].options[option].name,
+            productName + " - " + products[productName].options[option].name,
           price: products[productName].options[option].price,
           count: cart[productName][option],
           subtotal:
@@ -155,8 +153,7 @@ const cartOptions = computed(() => {
         <template #default>
           <UInput
             v-model="state.name"
-            size="xl"
-            variant="outline"
+            :ui="{ default: { size: 'xl', variant: 'outline' } }"
             inputClass="bg-white dark:bg-gray-800 py-4"
           >
             <label
@@ -181,8 +178,7 @@ const cartOptions = computed(() => {
         <template #default>
           <UInput
             v-model="state.major"
-            size="xl"
-            variant="outline"
+            :ui="{ default: { size: 'xl', variant: 'outline' } }"
             inputClass="bg-white dark:bg-gray-800 py-4"
           >
             <label
@@ -207,8 +203,7 @@ const cartOptions = computed(() => {
         <template #default>
           <UInput
             v-model="state.phone"
-            size="xl"
-            variant="outline"
+            :ui="{ default: { size: 'xl', variant: 'outline' } }"
             inputClass="bg-white dark:bg-gray-800 py-4"
           >
             <label
@@ -233,8 +228,7 @@ const cartOptions = computed(() => {
         <template #default>
           <UInput
             v-model="state.email"
-            size="xl"
-            variant="outline"
+            :ui="{ default: { size: 'xl', variant: 'outline' } }"
             inputClass="bg-white dark:bg-gray-800 py-4"
           >
             <label
@@ -263,8 +257,7 @@ const cartOptions = computed(() => {
       </div>
       <UTextarea
         v-model="state.remarks"
-        size="xl"
-        variant="outline"
+        :ui="{ default: { size: 'xl', variant: 'outline' } }"
         inputClass="bg-white dark:bg-gray-800 py-4"
         placeholder="留言給竹苗！"
       >
