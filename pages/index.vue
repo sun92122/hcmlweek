@@ -14,9 +14,8 @@
     >
       <template #default="{ link }">
         <ULink
-          class="group-hover:text-primary relative"
+          :class="['group-hover:text-primary relative', link.label === getNowTag && 'text-primary']"
           @click="() => store.setNowTag(link.label)"
-          :active="link.label === getNowTag"
           >{{ link.label }}</ULink
         >
       </template>
