@@ -205,12 +205,12 @@ export const useStore = defineStore("store", {
       }
       let output = "";
       for (const key in tempInfo) {
-        output += "\n";
         if (tempInfo[key].length > 0) {
+          output += "\n";
           output += `${key}：\n`;
           output += tempInfo[key].join("\n");
+          output += "\n";
         }
-        output += "\n";
       }
       return output;
     },
