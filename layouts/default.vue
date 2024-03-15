@@ -64,6 +64,7 @@ export default {
           {
             label: "Help",
             icon: "i-heroicons-question-mark-circle",
+            to: "/help",
           },
           {
             label: "IG",
