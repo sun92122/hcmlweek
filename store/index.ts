@@ -38,7 +38,6 @@ interface Tag {
 
 interface State {
   cart: Cart;
-  isLoading: boolean;
   products: Products;
   tmpProduct: Product | null;
   tmpProductName: string | null;
@@ -52,7 +51,6 @@ export const useStore = defineStore("store", {
   state: () =>
     ({
       cart: {},
-      isLoading: false,
       products: {} as Products,
       tmpProduct: null as Product | null,
       tmpProductName: null as string | null,
