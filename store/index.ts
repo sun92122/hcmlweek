@@ -45,6 +45,7 @@ interface State {
   cartCount: number;
   apiURL: string;
   nowTag: string;
+  form: any;
 }
 
 export const useStore = defineStore("store", {
@@ -58,6 +59,7 @@ export const useStore = defineStore("store", {
       cartCount: 1,
       apiURL: API_URL,
       nowTag: "所有商品",
+      form: null,
     } as unknown as State),
   actions: {
     addToCart(productName: string, options: number, count: number) {

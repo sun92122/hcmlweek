@@ -49,7 +49,7 @@ const schema = z.object({
 
 type Schema = z.output<typeof schema>;
 
-const state = reactive({
+let tmpState = reactive({
   name: undefined,
   major: undefined,
   phone: undefined,
@@ -60,7 +60,15 @@ const state = reactive({
   pickupphone: undefined,
   pickupemail: undefined,
   pickupinfo: store.getPickupInfo,
+  remarks: undefined,
 });
+if (store.form) {
+  tmpState = store.form;
+}
+const state = tmpState;
+
+const canLottery = store.getTotal >= 100;
+state.lottery = canLottery;
 
 async function onSubmit(event: FormSubmitEvent<Schema>) {
   // Do something with data
@@ -115,6 +123,10 @@ const cartNum = computed(() => {
     }
   }
   return num;
+});
+
+onBeforeRouteLeave(() => {
+  store.form = state;
 });
 </script>
 
