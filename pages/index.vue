@@ -1,5 +1,9 @@
 <template>
-  <UContainer>
+  <UContainer
+    :ui="{
+      padding: 'px-0 sm:px-6',
+    }"
+  >
     <USkeleton class="banner-container" />
   </UContainer>
   <div class="homepage-container">
