@@ -11,7 +11,7 @@
     </UHorizontalNavigation>
 
     <!-- announcement -->
-    <UModal v-model="showAnnouncement">
+    <UModal v-model="showAnnouncement" :ui="{ container: 'items-center' }">
       <UCard>
         <template #header>
           <div class="h-8">Header</div>
