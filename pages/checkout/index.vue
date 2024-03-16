@@ -166,8 +166,8 @@ onBeforeRouteLeave(() => {
     <UForm :schema="schema" :state="state" class="space-y-4" @submit="onSubmit">
       <div class="form-subtitle">
         <span class="text-2xl">購物車詳情</span>
-        <span class="text-md"
-          >共 {{ cartNum }} 項商品，總金額 NT ${{ store.getTotal }}</span
+        <span class="text-md font-semibold"
+          >共 {{ cartNum }} 項，總計 NT ${{ store.getTotal }}</span
         >
       </div>
       <UTable
