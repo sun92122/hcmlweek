@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { useStore } from "~/store";
+
 const links = [
   {
     label: "購物車",
@@ -12,6 +14,13 @@ const links = [
     label: "確認訂單",
   },
 ];
+
+const store = useStore();
+
+const cart = store.cart;
+const form = store.form;
+
+const router = useRouter();
 </script>
 
 <template>
@@ -36,6 +45,94 @@ const links = [
         </template>
       </UBreadcrumb>
     </div>
+
+    <div class="subtitle">
+      <span class="text-2xl">確認訂單</span>
+    </div>
+    <div class="subtitle">
+      <span>
+        請確認您的訂單資訊，並點擊「確認訂單」按鈕完成訂購。若有錯誤請返回上一頁修改。
+      </span>
+    </div>
+    <div class="confirm-info-container">
+      <div>
+        <span>訂購人姓名</span>
+        <span>{{ form.name }}</span>
+      </div>
+      <div>
+        <span>訂購人系級/處室</span>
+        <span>{{ form.major }}</span>
+      </div>
+      <div>
+        <span>訂購人電話</span>
+        <span>{{ form.phone }}</span>
+      </div>
+      <div>
+        <span>訂購人信箱</span>
+        <span>{{ form.email }}</span>
+      </div>
+      <div v-if="!!form.lottery">
+        <span>參加抽獎</span>
+        <span>是</span>
+      </div>
+      <div v-if="!form.pickup">
+        <span>取貨方式</span>
+        <span>自行取貨</span>
+      </div>
+      <div v-if="!!form.pickup">
+        <span>取貨人姓名</span>
+        <span>{{ form.pickupname }}</span>
+      </div>
+      <div v-if="!!form.pickup">
+        <span>取貨人電話</span>
+        <span>{{ form.pickupphone }}</span>
+      </div>
+      <div v-if="!!form.pickup">
+        <span>取貨人信箱</span>
+        <span>{{ form.pickupemail }}</span>
+      </div>
+      <div>
+        <span>付款方式</span>
+        <span
+          >正式週現場付款
+          <UIcon
+            dynamic
+            name="i-bi-info-circle"
+            class="text-gray-400 dark:text-gray-500 w-3 cursor-pointer"
+            @click="router.push('/help#payment')"
+          />
+        </span>
+      </div>
+      <div>
+        <span>總金額</span>
+        <span class="font-semibold">NT ${{ store.getTotal }}</span>
+      </div>
+      <div>
+        <span>訂購商品</span>
+      </div>
+      <UTextarea
+        v-model="store.getPickupInfo"
+        :ui="{ default: { size: 'xl', variant: 'none' } }"
+        disabled
+        autoresize
+      />
+      <div>
+        <span>訂單備註</span>
+        <span v-if="!form.remarks">無</span>
+      </div>
+      <UTextarea
+        v-if="!!form.remarks"
+        v-model="form.remarks"
+        :ui="{ default: { size: 'xl', variant: 'none' } }"
+        :rows="1"
+        disabled
+        autoresize
+      />
+    </div>
+
+    <div class="flex flex-col items-center justify-center">
+      <UButton class="mt-4" @click=""> 確認訂單 </UButton>
+    </div>
   </div>
 </template>
 
@@ -52,5 +149,29 @@ const links = [
   align-items: center;
   margin-bottom: 1rem;
   margin-top: 1rem;
+}
+
+.subtitle {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  text-align: left;
+  margin: 1rem 0 1rem;
+}
+
+.confirm-info-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  margin: 1rem 0 0;
+}
+
+.confirm-info-container div {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0.5rem 0 0.5rem;
 }
 </style>
