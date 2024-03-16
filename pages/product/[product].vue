@@ -194,6 +194,8 @@ export default {
       store.addToCart(name, index, Math.max(0, Math.floor(count)));
       store.$patch({ cartCount: 1 });
 
+      // random toast id
+      const toastID = Math.floor(Math.random() * 1000000);
       this.toast.add({
         title: "成功加入 <u>購物車</u> ",
         description:
@@ -202,8 +204,10 @@ export default {
             ? `（${store.getProducts[name].options[index].name}）`
             : ""),
         timeout: 2500,
+        id: `${toastID}`,
         click: () => {
           this.$router.push("/cart");
+          this.toast.remove(`${toastID}`);
         },
       });
     },
