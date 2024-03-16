@@ -1,12 +1,41 @@
 <template>
   <div id="app">
+    <!-- use Cookie Notification -->
+    <UNotification
+      v-show="showNotification"
+      class="text-left"
+      id="cookie"
+      title="Cookie"
+      description="購物車會儲存在瀏覽器 Cookie 中，您也可以放點 Cookie 進購物車。"
+      :timeout="0"
+      :actions="[
+        {
+          label: '我知道了',
+          onClick: () => (showNotification = false),
+        },
+        {
+          label: '了解更多',
+          to: 'https://www.cookiesandyou.com/',
+          target: '_blank',
+        },
+      ]"
+      :close-button="false"
+    >
+    </UNotification>
+
     <NuxtLoadingIndicator />
     <NuxtLayout />
 
-    <UNotifications />
+    <UNotifications>
+      <template #title="{ title }">
+        <span v-html="title"></span>
+      </template>
+      <template #description="{ description }">
+        <span v-html="description"></span>
+      </template>
+    </UNotifications>
   </div>
 </template>
-
 
 <script setup lang="ts">
 useHead({
@@ -18,6 +47,8 @@ useHead({
     },
   ],
 });
+
+const showNotification = ref(true);
 </script>
 
 <style>
