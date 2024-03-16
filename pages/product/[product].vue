@@ -38,7 +38,7 @@
           </span>
         </div>
         <div
-          v-if="product.options.length >= 2"
+          v-if="product.options.length >= 1"
           class="product-option-container"
         >
           <UButton
@@ -46,7 +46,7 @@
             :color="tmpOptionIndex === index ? 'purple' : 'gray'"
             variant="outline"
             :key="index"
-            :label="option.name"
+            :label="option.name || productName"
             :onClick="
               () => {
                 tmpOptionIndex = index;
@@ -243,6 +243,8 @@ if (!product) {
     description: "找不到這個商品",
     timeout: 5000,
   });
+} else if (product.options.length == 1) {
+  store.tmpOptionIndex = 0;
 }
 </script>
 

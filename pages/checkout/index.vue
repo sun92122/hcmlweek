@@ -93,7 +93,7 @@ const cartOptions = computed(() => {
   const products = store.products;
   for (const productName in cart) {
     if (!products[productName]) continue;
-    if (products[productName].options.length <= 1) {
+    if (products[productName].options.length < 1) {
       cartTmp.push({
         name: productName,
         price: products[productName].price.min,
@@ -178,6 +178,7 @@ onBeforeRouteLeave(() => {
           { key: 'count', label: '數量' },
           { key: 'subtotal', label: '小計' },
         ]"
+        class="text-left"
       >
         <template #price="{ row }">
           <span>NT ${{ row.price }}</span>
