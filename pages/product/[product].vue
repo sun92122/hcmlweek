@@ -195,13 +195,16 @@ export default {
       store.$patch({ cartCount: 1 });
 
       this.toast.add({
-        title: "成功加入購物車",
+        title: "成功加入 <u>購物車</u> ",
         description:
           `${count} 件 ${name}` +
           (index >= 0
             ? `（${store.getProducts[name].options[index].name}）`
             : ""),
         timeout: 2500,
+        click: () => {
+          this.$router.push("/cart");
+        },
       });
     },
   },
