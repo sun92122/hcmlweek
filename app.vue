@@ -15,7 +15,7 @@
         },
         {
           label: '了解更多',
-          to: 'https://www.cookiesandyou.com/',
+          to: 'https://www.cloudflare.com/zh-tw/learning/privacy/what-are-cookies/',
           target: '_blank',
         },
       ]"
