@@ -203,16 +203,17 @@ export const useStore = defineStore("store", {
           }
         }
       }
-      let output = "";
+      let outputList = [];
       for (const key in tempInfo) {
         if (tempInfo[key].length > 0) {
-          output += "\n";
-          output += `${key}：\n`;
-          output += tempInfo[key].join("\n");
-          output += "\n";
+          // output += "\n";
+          // output += `${key}：\n`;
+          // output += tempInfo[key].join("\n");
+          // output += "\n";
+          outputList.push(`${key}：\n${tempInfo[key].join("\n")}`);
         }
       }
-      return output;
+      return outputList.join("\n\n");
     },
   },
   persist: {
