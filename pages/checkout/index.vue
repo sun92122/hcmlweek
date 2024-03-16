@@ -289,13 +289,17 @@ onBeforeRouteLeave(() => {
       </UFormGroup>
       <UFormGroup name="lottery" class="flex items-center">
         <template #default>
-          <UToggle v-model="state.lottery" class="mx-3" :disabled="!canLottery" />
+          <UToggle
+            v-model="state.lottery"
+            class="mx-3"
+            :disabled="!canLottery"
+          />
           <span class="text-md"
             >我要參加抽獎
             <UIcon
               dynamic
               name="i-bi-info-circle"
-              class="text-gray-400 dark:text-gray-500 w-3"
+              class="text-gray-400 dark:text-gray-500 w-3 cursor-pointer"
               @click="router.push('/help#lottery')"
             />
           </span>
