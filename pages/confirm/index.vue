@@ -21,6 +21,26 @@ const cart = store.cart;
 const form = store.form;
 
 const router = useRouter();
+
+const pickupInfo = store.getPickupInfoAsStr().replaceAll("\n", "<br />");
+const remarks = `${form.remarks}`.replaceAll("\n", "<br />");
+const state = reactive({
+  姓名: form.name,
+  系級: form.major,
+  總價: store.getTotal,
+  訂單總覽: pickupInfo,
+  聯絡電話: form.phone,
+  電子郵件: form.email,
+  參加抽獎: form.lottery ? "是" : "",
+  備註: remarks,
+});
+
+function submited() {
+  store.cart = [] as any;
+  store.form = null;
+  // router.push("/success");
+  console.log("submited");
+}
 </script>
 
 <template>
@@ -130,9 +150,37 @@ const router = useRouter();
       />
     </div>
 
-    <div class="flex flex-col items-center justify-center">
-      <UButton class="mt-4" @click=""> 確認訂單 </UButton>
-    </div>
+    <iframe
+      name="hidden_iframe"
+      id="hidden_iframe"
+      style="display: none"
+    ></iframe>
+    <form
+      class="flex flex-col items-center justify-center py-6"
+      :action="store.apiURL"
+      method="post"
+      target="hidden_iframe"
+      autocomplete="off"
+      name="form"
+      enctype="text/plain"
+      @submit.after="submited"
+    >
+      <input name="姓名" v-model="state.姓名" type="hidden" />
+      <input name="系級" v-model="state.系級" type="hidden" />
+      <input name="總價" v-model="state.總價" type="hidden" />
+      <input name="訂單總覽" v-model="state.訂單總覽" type="hidden" />
+      <input name="聯絡電話" v-model="state.聯絡電話" type="hidden" />
+      <input name="電子郵件" v-model="state.電子郵件" type="hidden" />
+      <input name="參加抽獎" v-model="state.參加抽獎" type="hidden" />
+      <input name="備註" v-model="state.備註" type="hidden" />
+      <UButton
+        color="fuchsia"
+        variant="solid"
+        size="lg"
+        :label="'送出訂單'"
+        type="submit"
+      ></UButton>
+    </form>
   </div>
 </template>
 
