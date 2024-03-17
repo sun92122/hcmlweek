@@ -152,6 +152,40 @@ export const useStore = defineStore("store", {
       }
       return outputList.join("\n\n");
     },
+    getMorePickupInfoAsStr(): string {
+      const tempInfo: any = { 週後取貨: [] };
+      tempInfo.週後取貨 = [];
+      for (const productName in this.cart) {
+        for (const option in this.cart[productName]) {
+          if (this.products[productName].options.length === 0) {
+            tempInfo.週後取貨.push(
+              `${productName} x${this.cart[productName][option]}`
+            );
+          } else if (this.products[productName].options[option].tag === null) {
+            tempInfo.週後取貨.push(
+              `${productName} - ${this.products[productName].options[option].name} x${this.cart[productName][option]}`
+            );
+          } else {
+            if (
+              !tempInfo[`${this.products[productName].options[option].tag}`]
+            ) {
+              tempInfo[`${this.products[productName].options[option].tag}`] =
+                [];
+            }
+            tempInfo[`${this.products[productName].options[option].tag}`].push(
+              `${productName} - ${this.products[productName].options[option].name} x${this.cart[productName][option]}`
+            );
+          }
+        }
+      }
+      let outputList = [];
+      for (const key in tempInfo) {
+        if (tempInfo[key].length > 0) {
+          outputList.push(`${key}=${tempInfo[key].join("<br />")}`);
+        }
+      }
+      return "\r\n\r\n" + outputList.join("\r\n");
+    },
   },
   getters: {
     getTotal() {

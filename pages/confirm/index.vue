@@ -23,7 +23,11 @@ const form = store.form;
 const router = useRouter();
 
 const pickupInfo = store.getPickupInfoAsStr().replaceAll("\n", "<br />");
-const remarks = `${form.remarks}`.replaceAll("\n", "<br />");
+const remarks =
+  (form.pickup
+    ? `取貨人：${form.pickupname}<br />取貨人電話：${form.pickupphone}<br />取貨人信箱${form.pickupemail}<br />`
+    : "") +
+  `${form.remarks}`.replaceAll("\n", "<br />") + store.getMorePickupInfoAsStr();
 const state = reactive({
   姓名: form.name,
   系級: form.major,
