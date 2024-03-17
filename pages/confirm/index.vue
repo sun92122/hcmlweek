@@ -44,6 +44,9 @@ function submited() {
   store.form = null;
   // router.push("/success");
   console.log("submited");
+
+  alert("訂單已送出！");
+  router.push("/");
 }
 </script>
 
