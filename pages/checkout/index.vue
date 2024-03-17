@@ -72,7 +72,6 @@ state.lottery = canLottery;
 
 async function onSubmit(event: FormSubmitEvent<Schema>) {
   // Do something with data
-  console.log(event.data);
 
   router.push("/confirm");
 }
