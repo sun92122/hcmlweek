@@ -1,5 +1,4 @@
 import { defineStore, createPinia } from "pinia";
-import Product from "~/pages/product/[product].vue";
 
 // read from .env
 const API_KEY = process.env.API_KEY;
@@ -46,6 +45,7 @@ interface State {
   apiURL: string;
   nowTag: string;
   form: any;
+  showNotification: boolean;
 }
 
 export const useStore = defineStore("store", {
@@ -60,6 +60,7 @@ export const useStore = defineStore("store", {
       apiURL: API_URL,
       nowTag: "所有商品",
       form: null,
+      showNotification: true,
     } as unknown as State),
   actions: {
     addToCart(productName: string, options: number, count: number) {
@@ -217,6 +218,6 @@ export const useStore = defineStore("store", {
     },
   },
   persist: {
-    paths: ["cart"],
+    paths: ["cart", "showNotification"],
   },
 });

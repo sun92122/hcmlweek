@@ -11,7 +11,10 @@
       :actions="[
         {
           label: '我知道了',
-          onClick: () => (showNotification = false),
+          onClick: () => {
+            showNotification = false;
+            store.showNotification = false;
+          },
         },
         {
           label: '了解更多',
@@ -38,6 +41,8 @@
 </template>
 
 <script setup lang="ts">
+import { useStore } from "./store";
+
 useHead({
   title: "竹苗文化週",
   meta: [
@@ -49,6 +54,10 @@ useHead({
 });
 
 const showNotification = ref(true);
+const store = useStore();
+if (!store.showNotification) {
+  showNotification.value = false;
+}
 </script>
 
 <style>
