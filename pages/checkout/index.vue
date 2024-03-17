@@ -67,7 +67,7 @@ if (store.form) {
 }
 const state = tmpState;
 
-const canLottery = store.getTotal >= 100;
+const canLottery = store.getTotal >= 60;
 state.lottery = canLottery;
 
 async function onSubmit(event: FormSubmitEvent<Schema>) {
