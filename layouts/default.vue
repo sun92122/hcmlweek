@@ -17,12 +17,15 @@
           <div class="h-4">竹夢踏實 苗繪宇宙</div>
         </template>
 
-        <div class="h-32 flex flex-col">
+        <div class="flex flex-col">
           <span class="pb-1"> 預購週時間：3/18-3/22 </span>
           <span class="pb-1"> 正式週時間：3/25-4/12 </span>
+          <span class="pb-1"></span>
+          <span class="pb-1"> ‼️注意😎謝謝你的注意‼️ </span>
           <span class="pb-1">
-            於預購週下單滿60元即擁有抽獎資格！！獎品包括燈籠滷味、茶壜折價券等等！！
+            於預購週下單滿60元即擁有抽獎資格，獎品包括豪哥炸雞、燈籠滷味及茶壜折價券！
           </span>
+          <span class="pb-1"> 最高可折抵20元唷🤩❤️‍🔥 </span>
         </div>
       </UCard>
     </UModal>
