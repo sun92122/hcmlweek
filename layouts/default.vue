@@ -14,14 +14,16 @@
     <UModal v-model="showAnnouncement" :ui="{ container: 'items-center' }">
       <UCard>
         <template #header>
-          <div class="h-8">Header</div>
+          <div class="h-4">竹夢踏實 苗繪宇宙</div>
         </template>
 
-        <div class="h-32">Content</div>
-
-        <template #footer>
-          <div class="h-8">Footer</div>
-        </template>
+        <div class="h-32 flex flex-col">
+          <span class="pb-1"> 預購週時間：3/18-3/22 </span>
+          <span class="pb-1"> 正式週時間：3/25-4/12 </span>
+          <span class="pb-1">
+            於預購週下單滿60元即擁有抽獎資格！！獎品包括燈籠滷味、茶壜折價券等等！！
+          </span>
+        </div>
       </UCard>
     </UModal>
 
