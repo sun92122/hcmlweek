@@ -19,7 +19,7 @@
           target: '_blank',
         },
       ]"
-      :close-button="false"
+      :close-button="{ icon: null }"
     >
     </UNotification>
 
