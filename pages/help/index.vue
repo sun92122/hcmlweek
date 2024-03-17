@@ -37,10 +37,10 @@ HELP
   <div class="help-container font-sans">
     <div class="help-title-container">
       <span class="help-title">竹苗文化週</span>
-      <span class="help-subtitle">2024 師大竹苗文化週</span>
+      <span class="help-subtitle" id="payment">2024 師大竹苗文化週</span>
     </div>
     <div class="help-paragraph">
-      <span id="payment">🌱預購商品付款方式：</span>
+      <span>🌱預購商品付款方式：</span>
       <span>　　於正式週3/24-4/12期間，至竹苗週攤位付款（現金／LINE Pay）</span>
     </div>
     <div class="help-paragraph">
