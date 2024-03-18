@@ -94,7 +94,7 @@ const getNowTag = computed(() => store.getNowTag);
 .banner-container {
   padding: 0 0 0;
   width: 100%;
-  height: 33vw;
+  height: auto;
   margin: auto;
 }
 
