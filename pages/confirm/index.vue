@@ -40,14 +40,21 @@ const state = reactive({
   備註: remarks,
 });
 
-function submited() {
-  store.cart = [] as any;
-  store.form = null;
-  // router.push("/success");
-  console.log("submited");
+const loading = ref(false);
 
-  alert("訂單已送出！");
-  router.push("/");
+function submited() {
+  loading.value = true;
+  
+  // wait for ? second
+  // router.push("/");
+  setTimeout(() => {
+    store.cart = {} as any;
+    store.form = null;
+    loading.value = false;
+    console.log("submited");
+    alert("訂單已送出！");
+    router.push("/");
+  }, 3000);
 }
 </script>
 
@@ -171,7 +178,7 @@ function submited() {
       autocomplete="off"
       name="form"
       enctype="text/plain"
-      @submit.after="submited"
+      @submit="submited"
     >
       <input name="姓名" v-model="state.姓名" type="hidden" />
       <input name="系級" v-model="state.系級" type="hidden" />
@@ -187,6 +194,7 @@ function submited() {
         size="lg"
         :label="'送出訂單'"
         type="submit"
+        :loading="loading"
       ></UButton>
     </form>
   </div>
