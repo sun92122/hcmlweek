@@ -67,9 +67,9 @@ HELP
       <span>🌱預購商品取貨地點及時間：</span>
       <span class="ml-4">1. 熱食預購商品：</span>
       <span class="ml-8">日期：</span>
-      <span class="ml-8">西大發：3/25-4/12</span>
-      <span class="ml-8">晌午粄食、彭老師野薑花粽、老街一口菜包：4/8-4/12</span>
       <span class="ml-8">貢丸湯、酒釀湯圓、仙草凍：3/25、3/27、3/29</span>
+      <span class="ml-8">西大發：3/25-3/29</span>
+      <span class="ml-8">晌午粄食、彭老師野薑花粽、老街一口菜包：4/8-4/12</span>
       <span class="ml-8">時間：12:30-13:00</span>
       <span class="ml-8">地點：竹苗週攤位</span>
       <span>　</span>
@@ -84,7 +84,7 @@ HELP
     </div>
     <div class="help-paragraph">
       <span id="lottery">🤑預購抽獎資格：</span>
-      <span class="ml-8">於3/18-3/22下單滿60元即擁有抽獎資格！</span>
+      <span class="ml-8">於3/18-3/23下單滿60元即擁有抽獎資格！</span>
       <span>　</span>
       <span>🤑預購抽獎獎品：</span>
       <span class="ml-4">1. 豪哥炸雞 10元折價券×10</span>
