@@ -1,3 +1,7 @@
+<script setup>
+import { useStore } from "~/store";
+</script>
+
 <template>
   <!-- 
 HELP
@@ -55,7 +59,9 @@ HELP
     </div>
     <div class="help-paragraph">
       <span>🌱預購商品付款方式：</span>
-      <span class="ml-8">於正式週3/24-4/12期間，至竹苗週攤位付款（現金／LINE Pay）</span>
+      <span class="ml-8"
+        >於正式週3/24-4/12期間，至竹苗週攤位付款（現金／LINE Pay）</span
+      >
     </div>
     <div class="help-paragraph">
       <span>🌱預購商品取貨地點及時間：</span>
@@ -97,6 +103,36 @@ HELP
         ></span
       >
     </div>
+    <div class="help-paragraph">
+      <span
+        >網站發生問題？
+        <UButton
+          label="嘗試移除 Cookie"
+          variant="link"
+          @click="
+            () => {
+              const store = useStore();
+              store.$reset();
+              const cookies = useCookie('store');
+              cookies.value = null;
+              reloadNuxtApp({ path: '/' });
+            }
+          "
+        />
+      </span>
+      <span
+        >本網站部署於
+        <ULink
+          to="https://www.cloudflare.com/zh-tw/developer-platform/pages/"
+          target="_blank"
+          ><u>Cloudflare Pages</u></ULink
+        >
+        ，原始碼可於
+        <ULink to="https://github.com/sun92122/hcmlweek" target="_blank"
+          ><u>GitHub</u></ULink
+        >取得。</span
+      >
+    </div>
   </div>
 </template>
 
@@ -104,7 +140,7 @@ HELP
 .banner-container {
   padding: 0 0 0;
   width: 100%;
-  height: 33vw;
+  height: auto;
   margin: auto;
 }
 
