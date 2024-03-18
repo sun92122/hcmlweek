@@ -44,7 +44,7 @@ const loading = ref(false);
 
 function submited() {
   loading.value = true;
-  
+
   // wait for ? second
   // router.push("/");
   setTimeout(() => {
@@ -52,8 +52,7 @@ function submited() {
     store.form = null;
     loading.value = false;
     console.log("submited");
-    alert("訂單已送出！");
-    router.push("/");
+    router.push("/confirm/submited");
   }, 3000);
 }
 </script>
@@ -233,9 +232,13 @@ function submited() {
 
 .confirm-info-container div {
   display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
   width: 100%;
   justify-content: space-between;
   align-items: center;
   margin: 0.5rem 0 0.5rem;
+  word-break: break-all;
+  text-align: left;
 }
 </style>
