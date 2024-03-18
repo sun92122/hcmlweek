@@ -55,22 +55,22 @@ HELP
     </div>
     <div class="help-paragraph">
       <span>🌱預購商品付款方式：</span>
-      <span>　　於正式週3/24-4/12期間，至竹苗週攤位付款（現金／LINE Pay）</span>
+      <span class="ml-8">於正式週3/24-4/12期間，至竹苗週攤位付款（現金／LINE Pay）</span>
     </div>
     <div class="help-paragraph">
       <span>🌱預購商品取貨地點及時間：</span>
-      <span>　1. 熱食預購商品：</span>
-      <span>　　日期：</span>
-      <span>　　西大發：3/25-4/12</span>
-      <span>　　晌午粄食、彭老師野薑花粽、老街一口菜包：4/8-4/12</span>
-      <span>　　貢丸湯、酒釀湯圓、仙草凍：3/25、3/27、3/29</span>
-      <span>　　時間：12:30-13:00</span>
-      <span>　　地點：竹苗週攤位</span>
+      <span class="ml-4">1. 熱食預購商品：</span>
+      <span class="ml-8">日期：</span>
+      <span class="ml-8">西大發：3/25-4/12</span>
+      <span class="ml-8">晌午粄食、彭老師野薑花粽、老街一口菜包：4/8-4/12</span>
+      <span class="ml-8">貢丸湯、酒釀湯圓、仙草凍：3/25、3/27、3/29</span>
+      <span class="ml-8">時間：12:30-13:00</span>
+      <span class="ml-8">地點：竹苗週攤位</span>
       <span>　</span>
-      <span>　2. 非熱食預購商品：</span>
-      <span>　　日期：4/18、4/19</span>
-      <span>　　時間：12:30-13:00</span>
-      <span>　　地點：誠正中庭</span>
+      <span class="ml-4">2. 非熱食預購商品：</span>
+      <span class="ml-8">日期：4/18、4/19</span>
+      <span class="ml-8">時間：12:30-13:00</span>
+      <span class="ml-8">地點：誠正中庭</span>
       <span>　</span>
       <span
         >▪若非熱食預購商品的領取時間不克前來，請將您方便的時間填在訂單備註💖</span
@@ -78,12 +78,12 @@ HELP
     </div>
     <div class="help-paragraph">
       <span id="lottery">🤑預購抽獎資格：</span>
-      <span>　　於3/18-3/22下單滿60元即擁有抽獎資格！</span>
+      <span class="ml-8">於3/18-3/22下單滿60元即擁有抽獎資格！</span>
       <span>　</span>
       <span>🤑預購抽獎獎品：</span>
-      <span>　1. 豪哥炸雞 10元折價券×10</span>
-      <span>　2. 燈籠滷味創始店 10元折價券×10</span>
-      <span>　3. 茶壜 20元折價券×20</span>
+      <span class="ml-4">1. 豪哥炸雞 10元折價券×10</span>
+      <span class="ml-4">2. 燈籠滷味創始店 10元折價券×10</span>
+      <span class="ml-4">3. 茶壜 20元折價券×20</span>
       <span>　</span>
       <span>（3/25會公布中獎名單於竹苗週IG帳號，折價券於取貨時一併領取）</span>
     </div>
@@ -101,6 +101,13 @@ HELP
 </template>
 
 <style>
+.banner-container {
+  padding: 0 0 0;
+  width: 100%;
+  height: 33vw;
+  margin: auto;
+}
+
 .help-container {
   width: 550px;
   max-width: 90vw;
