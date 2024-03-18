@@ -102,8 +102,9 @@ const cartOptions = computed(() => {
     } else {
       for (const option in cart[productName]) {
         cartTmp.push({
-          name:
-            productName + " - " + products[productName].options[option].name,
+          name: products[productName].options[option].name
+            ? productName + " - " + products[productName].options[option].name
+            : productName,
           price: products[productName].options[option].price,
           count: cart[productName][option],
           subtotal:

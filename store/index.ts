@@ -125,7 +125,9 @@ export const useStore = defineStore("store", {
             );
           } else if (this.products[productName].options[option].tag === null) {
             tempInfo.週後取貨.push(
-              `${productName} - ${this.products[productName].options[option].name} x${this.cart[productName][option]}`
+              this.products[productName].options[option].name
+                ? `${productName} - ${this.products[productName].options[option].name} x${this.cart[productName][option]}`
+                : `${productName} x${this.cart[productName][option]}`
             );
           } else {
             if (
@@ -135,7 +137,9 @@ export const useStore = defineStore("store", {
                 [];
             }
             tempInfo[`${this.products[productName].options[option].tag}`].push(
-              `${productName} - ${this.products[productName].options[option].name} x${this.cart[productName][option]}`
+              this.products[productName].options[option].name
+                ? `${productName} - ${this.products[productName].options[option].name} x${this.cart[productName][option]}`
+                : `${productName} x${this.cart[productName][option]}`
             );
           }
         }
@@ -163,7 +167,9 @@ export const useStore = defineStore("store", {
             );
           } else if (this.products[productName].options[option].tag === null) {
             tempInfo.週後取貨.push(
-              `${productName} - ${this.products[productName].options[option].name} x${this.cart[productName][option]}`
+              this.products[productName].options[option].name
+                ? `${productName} - ${this.products[productName].options[option].name} x${this.cart[productName][option]}`
+                : `${productName} x${this.cart[productName][option]}`
             );
           } else {
             if (
@@ -173,7 +179,9 @@ export const useStore = defineStore("store", {
                 [];
             }
             tempInfo[`${this.products[productName].options[option].tag}`].push(
-              `${productName} - ${this.products[productName].options[option].name} x${this.cart[productName][option]}`
+              this.products[productName].options[option].name
+                ? `${productName} - ${this.products[productName].options[option].name} x${this.cart[productName][option]}`
+                : `${productName} x${this.cart[productName][option]}`
             );
           }
         }
@@ -261,7 +269,9 @@ export const useStore = defineStore("store", {
             );
           } else if (this.products[productName].options[option].tag === null) {
             tempInfo.週後取貨.push(
-              `${productName} - ${this.products[productName].options[option].name} x${this.cart[productName][option]}`
+              this.products[productName].options[option].name
+                ? `${productName} - ${this.products[productName].options[option].name} x${this.cart[productName][option]}`
+                : `${productName} x${this.cart[productName][option]}`
             );
           } else {
             if (
@@ -271,7 +281,9 @@ export const useStore = defineStore("store", {
                 [];
             }
             tempInfo[`${this.products[productName].options[option].tag}`].push(
-              `${productName} - ${this.products[productName].options[option].name} x${this.cart[productName][option]}`
+              this.products[productName].options[option].name
+                ? `${productName} - ${this.products[productName].options[option].name} x${this.cart[productName][option]}`
+                : `${productName} x${this.cart[productName][option]}`
             );
           }
         }
