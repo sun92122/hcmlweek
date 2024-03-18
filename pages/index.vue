@@ -4,7 +4,13 @@
       padding: 'px-0 sm:px-6',
     }"
   >
-    <USkeleton class="banner-container" />
+    <NuxtImg
+      preload
+      format="webp"
+      src="/banner.webp"
+      alt="banner"
+      class="banner-container"
+    />
   </UContainer>
   <div class="homepage-container">
     <UHorizontalNavigation

@@ -34,6 +34,20 @@ HELP
 🌱與竹苗的聯絡方式：
 有任何其他疑問都可以私訊IG帳號：@hcmlweek
 -->
+  <UContainer
+    :ui="{
+      padding: 'px-0 sm:px-6',
+    }"
+  >
+    <NuxtImg
+      preload
+      format="webp"
+      src="/banner.webp"
+      alt="banner"
+      class="banner-container"
+    />
+  </UContainer>
+
   <div class="help-container font-sans">
     <div class="help-title-container">
       <span class="help-title">竹苗文化週</span>
