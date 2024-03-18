@@ -18,7 +18,7 @@
         </template>
 
         <div class="flex flex-col">
-          <span class="pb-1"> 預購週時間：3/18-3/22 </span>
+          <span class="pb-1"> 預購週時間：3/18-3/23 </span>
           <span class="pb-1"> 正式週時間：3/25-4/12 </span>
           <span class="pb-1"></span>
           <span class="pb-1"> ‼️注意😎謝謝你的注意‼️ </span>
