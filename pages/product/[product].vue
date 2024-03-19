@@ -324,6 +324,7 @@ div {
 .product-option-container {
   flex-direction: row;
   align-items: center;
+  flex-wrap: wrap;
   justify-content: flex-start;
   width: 100%;
 }
