@@ -100,6 +100,12 @@ export default defineComponent({
   height: 100px;
 }
 
+@media screen and (max-width: 400px) {
+  .product-info {
+    height: 120px;
+  }
+}
+
 .product-info div {
   width: 100%;
   text-align: left;
