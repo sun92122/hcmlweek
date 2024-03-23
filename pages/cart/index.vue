@@ -44,7 +44,7 @@
             variant="solid"
             size="lg"
             :label="'下一步，填寫聯路資訊'"
-            to="/checkout"
+            @Click="goNext"
           ></UButton>
         </div>
       </div>
@@ -84,6 +84,15 @@ if (Object.keys(products).length === 0) {
 
 const cart = store.getCart;
 const total = store.getTotal;
+
+const router = useRouter();
+const goNext = async () => {
+  try {
+    await refreshNuxtData();
+  } finally {
+    router.push("/checkout");
+  }
+};
 </script>
 
 <style scoped>

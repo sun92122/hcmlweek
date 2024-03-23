@@ -63,7 +63,10 @@ let tmpState = reactive({
   remarks: undefined,
 });
 if (store.form) {
-  tmpState = store.form;
+  tmpState.email = store.form.email;
+  tmpState.name = store.form.name;
+  tmpState.major = store.form.major;
+  tmpState.phone = store.form.phone;
 }
 const state = tmpState;
 
