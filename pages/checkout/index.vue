@@ -67,7 +67,7 @@ if (store.form) {
 }
 const state = tmpState;
 
-const canLottery = store.getTotal >= 60;
+const canLottery = store.getTotal >= 60 && new Date() < new Date("2024-03-24");
 state.lottery = canLottery;
 
 async function onSubmit(event: FormSubmitEvent<Schema>) {
